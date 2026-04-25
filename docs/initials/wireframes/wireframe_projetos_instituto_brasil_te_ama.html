@@ -1,0 +1,353 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bordo: #7B1C3E; --bordo-light: #f5eaee; --bordo-dark: #5a1230;
+  --gray-text: #3d3b38; --gray-mid: #6b6966; --gray-light: #f5f4f1; --white: #ffffff;
+}
+body { font-family: var(--font-sans); background: transparent; }
+.section { padding: 2rem 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.section-label {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray-mid); margin-bottom: 1rem; font-weight: 500;
+  display: flex; align-items: center; gap: 6px;
+}
+.section-label::before { content:''; display:inline-block; width:20px; height:1px; background:var(--gray-mid); }
+.annotation { font-size:10px; color:#185FA5; background:#E6F1FB; border:0.5px solid #85B7EB; border-radius:3px; padding:2px 7px; display:inline-block; margin-top:4px; }
+.pending { color:#854F0B; background:#FAEEDA; border-color:#EF9F27; }
+.ready { color:#3B6D11; background:#EAF3DE; border-color:#97C459; }
+.aproveitado { color:#3B6D11; background:#EAF3DE; border-color:#97C459; }
+.reescrito { color:#534AB7; background:#EEEDFE; border-color:#AFA9EC; }
+
+.nav { display:flex; align-items:center; justify-content:space-between; padding:14px 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); background:var(--white); }
+.nav-logo { display:flex; align-items:center; gap:10px; }
+.logo-box { width:36px; height:36px; border-radius:4px; background:var(--bordo); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; color:white; }
+.logo-name { font-size:13px; font-weight:500; color:var(--gray-text); }
+.nav-links { display:flex; gap:16px; font-size:12px; color:var(--gray-mid); }
+.nav-active { color:var(--bordo); font-weight:500; border-bottom:1.5px solid var(--bordo); padding-bottom:2px; }
+.nav-cta { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:7px 16px; border-radius:var(--border-radius-md); border:none; }
+
+.hero { background:var(--gray-light); padding:2.5rem 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); }
+.hero-eyebrow { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--bordo); margin-bottom:.75rem; font-weight:500; }
+.hero-headline { font-size:26px; font-weight:500; color:var(--gray-text); line-height:1.35; max-width:520px; margin-bottom:1rem; }
+.hero-sub { font-size:13px; color:var(--gray-mid); line-height:1.75; max-width:500px; }
+
+/* Filtros */
+.filtros { display:flex; gap:8px; flex-wrap:wrap; }
+.filtro { font-size:11px; padding:5px 14px; border-radius:20px; border:0.5px solid var(--color-border-secondary); color:var(--gray-mid); cursor:pointer; }
+.filtro-active { background:var(--bordo); color:white; border-color:var(--bordo); }
+
+/* Grid projetos */
+.projetos-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; }
+.projeto-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); overflow:hidden; }
+.projeto-img { height:80px; background:var(--gray-light); border-bottom:0.5px solid var(--color-border-tertiary); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-size:10px; color:var(--gray-mid); text-align:center; padding:8px; }
+.projeto-body { padding:12px 14px; }
+.projeto-status { display:inline-block; font-size:9px; padding:2px 8px; border-radius:10px; margin-bottom:6px; font-weight:500; }
+.status-confirmado { background:#EAF3DE; color:#3B6D11; }
+.status-em-andamento { background:#EEEDFE; color:#534AB7; }
+.status-planejamento { background:var(--color-background-secondary); color:var(--gray-mid); }
+.projeto-frente { font-size:9px; text-transform:uppercase; letter-spacing:0.07em; color:var(--bordo); font-weight:500; margin-bottom:4px; }
+.projeto-title { font-size:13px; font-weight:500; color:var(--gray-text); line-height:1.4; margin-bottom:6px; }
+.projeto-desc { font-size:11px; color:var(--gray-mid); line-height:1.5; margin-bottom:8px; }
+.projeto-meta { display:flex; align-items:center; justify-content:space-between; }
+.projeto-local { font-size:10px; color:var(--gray-mid); }
+.projeto-fonte { font-size:9px; color:var(--bordo); }
+.projeto-badge { display:inline-block; font-size:9px; padding:2px 7px; border-radius:3px; }
+.badge-aproveitado { background:#EAF3DE; color:#3B6D11; border:0.5px solid #97C459; }
+.badge-novo { background:#EEEDFE; color:#534AB7; border:0.5px solid #AFA9EC; }
+
+/* Aviso aproveitamento */
+.aviso-box { background:var(--bordo-light); border:0.5px solid rgba(123,28,62,0.15); border-radius:var(--border-radius-md); padding:1rem 1.25rem; margin-bottom:1.5rem; }
+.aviso-title { font-size:12px; font-weight:500; color:var(--bordo-dark); margin-bottom:4px; }
+.aviso-text { font-size:11px; color:#5a1230; line-height:1.6; }
+
+/* Nota update */
+.update-strip { background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:10px 14px; font-size:11px; color:var(--gray-mid); margin-top:1rem; border:0.5px solid var(--color-border-tertiary); }
+
+/* CTA */
+.cta-selo { background:var(--bordo); border-radius:var(--border-radius-lg); padding:1.75rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.cta-selo h3 { font-size:16px; font-weight:500; color:white; margin-bottom:6px; }
+.cta-selo p { font-size:12px; color:rgba(255,255,255,0.72); line-height:1.6; max-width:380px; }
+.cta-selo-btn { background:white; color:var(--bordo); font-size:12px; font-weight:500; padding:10px 20px; border-radius:var(--border-radius-md); border:none; white-space:nowrap; flex-shrink:0; }
+</style>
+
+<h2 class="sr-only">Wireframe da página Projetos — Instituto Brasil Te Ama — 11 projetos organizados por frente de atuação com indicação de origem do conteúdo</h2>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="logo-box">IBtA</div>
+    <div class="logo-name">Instituto Brasil Te Ama</div>
+  </div>
+  <div class="nav-links">
+    <span>Home</span><span>Sobre</span><span>Liderança</span><span>Selo Brasil Te Ama</span>
+    <span class="nav-active">Projetos</span>
+    <span>Notícias</span><span>Transparência</span><span>Contato</span>
+  </div>
+  <button class="nav-cta">Quero ser parceiro</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Projetos e frentes de atuação</div>
+  <h1 class="hero-headline">Ações concretas, documentadas e com impacto verificável.</h1>
+  <p class="hero-sub">O Instituto Brasil Te Ama atua em 10 frentes de atuação no Brasil e no exterior. Cada projeto tem descrição clara do problema enfrentado, da ação realizada e do público beneficiado.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">Filtros por frente de atuação</div>
+  <div class="aviso-box">
+    <div class="aviso-title">O que foi aproveitado do site atual</div>
+    <div class="aviso-text">O site atual em institutobrasilteama.org/category/projetos/ tem 9 projetos com textos reais publicados em março/2024. Os títulos, descrições de "O que é?" e "Para que serve?" foram aproveitados como base, reescritos no tom institucional aprovado e organizados por frente de atuação. Nenhum foi descartado — todos foram migrados e enriquecidos. 2 projetos novos foram adicionados com base nos documentos e na cobertura do Lo Scudo Magazine.</div>
+  </div>
+  <div class="filtros">
+    <div class="filtro filtro-active">Todos</div>
+    <div class="filtro">Assistência social</div>
+    <div class="filtro">Direitos humanos</div>
+    <div class="filtro">Saúde e prevenção</div>
+    <div class="filtro">Educação e capacitação</div>
+    <div class="filtro">Meio ambiente</div>
+    <div class="filtro">Internacional</div>
+    <div class="filtro">Parceria institucional</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Projetos com evidência pública confirmada — publicar no lançamento</div>
+  <div class="projetos-grid">
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação · DF<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-confirmado">Ativo · confirmado</span>
+        <span class="projeto-badge badge-novo" style="margin-left:4px;">novo</span>
+        <div class="projeto-frente">Assistência social · DF</div>
+        <div class="projeto-title">Pobreza extrema no Distrito Federal</div>
+        <div class="projeto-desc">Atendimento direto a mais de 1.000 pessoas em situação de vulnerabilidade extrema por mês, com distribuição de alimentos, vestuário e suprimentos básicos.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Brasília · DF</span>
+          <span class="projeto-fonte">Lo Scudo Magazine</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto do poço · Nigéria<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-confirmado">Ativo · confirmado</span>
+        <span class="projeto-badge badge-novo" style="margin-left:4px;">novo</span>
+        <div class="projeto-frente">Acesso à água · Internacional</div>
+        <div class="projeto-title">Poço d'água na Nigéria</div>
+        <div class="projeto-desc">Financiamento e construção de poço de água potável em parceria com a Família Real do Reino de Idado-Ijesa, levando acesso à água a comunidades carentes.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Nigéria · Reino de Idado-Ijesa</span>
+          <span class="projeto-fonte">Lo Scudo Magazine</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto do evento · MPDF<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-confirmado">Ativo · confirmado</span>
+        <span class="projeto-badge badge-novo" style="margin-left:4px;">novo</span>
+        <div class="projeto-frente">Direitos humanos · DF</div>
+        <div class="projeto-title">Giornata della Donna — MPDF</div>
+        <div class="projeto-desc">Evento de empoderamento feminino realizado em parceria com o Ministério Público do DF, promovendo direitos, visibilidade e protagonismo das mulheres.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Brasília · DF</span>
+          <span class="projeto-fonte">Lo Scudo Magazine</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Projetos migrados do site atual — reescritos no tom aprovado</div>
+  <div class="projetos-grid">
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-em-andamento">Em andamento</span>
+        <span class="projeto-badge badge-aproveitado" style="margin-left:4px;">aproveitado</span>
+        <div class="projeto-frente">Assistência social · Saúde</div>
+        <div class="projeto-title">Projeto Salvando Vidas</div>
+        <div class="projeto-desc">Ações de promoção da dignidade humana — capacitação profissional, empreendedorismo e apoio a jovens de baixa renda. Parceria com estado e agentes individuais.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Brasil · DF</span>
+          <span class="projeto-fonte">Site atual · mar/2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-em-andamento">Em andamento</span>
+        <span class="projeto-badge badge-aproveitado" style="margin-left:4px;">aproveitado</span>
+        <div class="projeto-frente">Idosos · Saúde digital</div>
+        <div class="projeto-title">Programa Viver — Envelhecimento Ativo e Saudável</div>
+        <div class="projeto-desc">Promoção da educação, saúde e mobilidade física para idosos por meio da tecnologia — inclusão digital e social, autoestima e interação comunitária.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Brasil</span>
+          <span class="projeto-fonte">Site atual · mar/2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-em-andamento">Em andamento</span>
+        <span class="projeto-badge badge-aproveitado" style="margin-left:4px;">aproveitado</span>
+        <div class="projeto-frente">Direitos humanos · Criança</div>
+        <div class="projeto-title">Programa Nacional de Localização de Desaparecidos</div>
+        <div class="projeto-desc">Ampliação da divulgação sobre crianças desaparecidas e suporte à implementação do Cadastro Nacional de Crianças e Adolescentes Desaparecidos.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Nacional</span>
+          <span class="projeto-fonte">Site atual · mar/2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-em-andamento">Em andamento</span>
+        <span class="projeto-badge badge-aproveitado" style="margin-left:4px;">aproveitado</span>
+        <div class="projeto-frente">Educação · Geração de renda</div>
+        <div class="projeto-title">Projeto Nação Empreendedora</div>
+        <div class="projeto-desc">Capacitação em empreendedorismo, cooperativismo e agricultura familiar para comunidades tradicionais — geração de renda com preservação cultural e igualdade étnico-racial.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Brasil · comunidades tradicionais</span>
+          <span class="projeto-fonte">Site atual · mar/2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-em-andamento">Em andamento</span>
+        <span class="projeto-badge badge-aproveitado" style="margin-left:4px;">aproveitado</span>
+        <div class="projeto-frente">Moradia · Assistência social</div>
+        <div class="projeto-title">Projeto Moradia para Populações em Risco e em Situação de Rua</div>
+        <div class="projeto-desc">Ações voltadas à redução do déficit habitacional e ao apoio a populações em situação de rua ou em áreas de risco — dignidade como premissa.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Brasil</span>
+          <span class="projeto-fonte">Site atual · mar/2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-em-andamento">Em andamento</span>
+        <span class="projeto-badge badge-aproveitado" style="margin-left:4px;">aproveitado</span>
+        <div class="projeto-frente">Saúde · Prevenção</div>
+        <div class="projeto-title">Projeto de Prevenção ao Uso de Álcool e Outras Drogas</div>
+        <div class="projeto-desc">Ações de prevenção, informação e suporte a pessoas e comunidades em situação de vulnerabilidade relacionada ao uso de substâncias psicoativas.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Brasil</span>
+          <span class="projeto-fonte">Site atual · mar/2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-em-andamento">Em andamento</span>
+        <span class="projeto-badge badge-aproveitado" style="margin-left:4px;">aproveitado</span>
+        <div class="projeto-frente">Saúde · Infância</div>
+        <div class="projeto-title">Programa Criança Protegida</div>
+        <div class="projeto-desc">Clínicas multidisciplinares especializadas no atendimento integral de crianças e adolescentes — desenvolvimento social, físico e afetivo com cuidado e prevenção.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Brasil</span>
+          <span class="projeto-fonte">Site atual · mar/2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-em-andamento">Em andamento</span>
+        <span class="projeto-badge badge-aproveitado" style="margin-left:4px;">aproveitado</span>
+        <div class="projeto-frente">Educação · Mulheres</div>
+        <div class="projeto-title">A Inclusão de Todos é o Futuro que Queremos</div>
+        <div class="projeto-desc">Curso de capacitação de entes públicos e privados para o trabalho com mulheres — "Mulher, Capacitar para Melhor Cuidar" — formação profissional e protagonismo feminino.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Brasil</span>
+          <span class="projeto-fonte">Site atual · mar/2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projeto-card">
+      <div class="projeto-img">
+        foto da ação<br>
+        <span class="annotation pending" style="font-size:9px;">pendente</span>
+      </div>
+      <div class="projeto-body">
+        <span class="projeto-status status-em-andamento">Em andamento</span>
+        <span class="projeto-badge badge-aproveitado" style="margin-left:4px;">aproveitado</span>
+        <div class="projeto-frente">Conferências · Parceria institucional</div>
+        <div class="projeto-title">Apoio à Realização de Conferências Nacionais e Internacionais</div>
+        <div class="projeto-desc">Financiamento e suporte à realização de conferências pela vida humana, pela família e pela infância — espaços de debate de políticas públicas com sociedade civil e governo.</div>
+        <div class="projeto-meta">
+          <span class="projeto-local">Nacional · Internacional</span>
+          <span class="projeto-fonte">Site atual · mar/2024</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="update-strip">Novos projetos sendo documentados e adicionados — fichas completas em elaboração pela equipe. <span class="annotation pending">total de projetos formalizados a preencher antes do lançamento</span></div>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="section-label">CTA — Apoiar os projetos</div>
+  <div class="cta-selo">
+    <div>
+      <h3>Sua empresa pode apoiar estes projetos</h3>
+      <p>Ao aderir ao Programa Selo Brasil Te Ama, sua empresa contribui diretamente para as frentes de atuação do Instituto — com transparência, critério e prestação de contas periódica.</p>
+    </div>
+    <button class="cta-selo-btn">Quero ser parceiro →</button>
+  </div>
+</div>

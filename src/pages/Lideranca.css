@@ -1,0 +1,82 @@
+/* Page-scoped styles ported 1:1 from wireframe_lideranca_instituto_brasil_te_ama.html */
+.page-lideranca .section { padding: 2rem 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.page-lideranca .section-label {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray-mid); margin-bottom: 1rem; font-weight: 500;
+  display: flex; align-items: center; gap: 6px;
+}
+.page-lideranca .section-label::before { content:''; display:inline-block; width:20px; height:1px; background:var(--gray-mid); }
+
+.page-lideranca .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); background:var(--white); }
+.page-lideranca .nav-logo { display:flex; align-items:center; gap:10px; }
+.page-lideranca .logo-box { width:36px; height:36px; border-radius:4px; background:var(--bordo); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; color:white; }
+.page-lideranca .logo-name { font-size:13px; font-weight:500; color:var(--gray-text); }
+.page-lideranca .nav-links { display:flex; gap:16px; font-size:12px; color:var(--gray-mid); }
+.page-lideranca .nav-active { color:var(--bordo); font-weight:500; border-bottom:1.5px solid var(--bordo); padding-bottom:2px; }
+.page-lideranca .nav-cta { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:7px 16px; border-radius:var(--border-radius-md); border:none; }
+
+/* Hero */
+.page-lideranca .hero { background:var(--gray-light); padding:2.5rem 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); }
+.page-lideranca .hero-eyebrow { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--bordo); margin-bottom:.75rem; font-weight:500; }
+.page-lideranca .hero-headline { font-size:26px; font-weight:500; color:var(--gray-text); line-height:1.35; max-width:520px; margin-bottom:1rem; }
+.page-lideranca .hero-sub { font-size:13px; color:var(--gray-mid); line-height:1.75; max-width:500px; }
+
+/* Perfil líder */
+.page-lideranca .lider-section { padding:2.5rem 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); }
+.page-lideranca .lider-header { display:grid; grid-template-columns:180px 1fr; gap:2rem; align-items:start; margin-bottom:2rem; }
+.page-lideranca .lider-foto {
+  width:180px; height:220px; border-radius:var(--border-radius-lg);
+  background:var(--gray-light); border:0.5px solid var(--color-border-tertiary);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px; font-size:11px; color:var(--gray-mid); text-align:center; padding:1rem;
+}
+.page-lideranca .lider-foto-initials {
+  width:56px; height:56px; border-radius:50%; background:var(--bordo);
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; font-weight:500; color:white; margin-bottom:4px;
+}
+.page-lideranca .lider-nome { font-size:22px; font-weight:500; color:var(--gray-text); margin-bottom:4px; line-height:1.2; }
+.page-lideranca .lider-cargo { font-size:14px; color:var(--bordo); font-weight:500; margin-bottom:6px; }
+.page-lideranca .lider-ordem { font-size:12px; color:var(--gray-mid); line-height:1.6; margin-bottom:1rem; border-left:2px solid var(--bordo); padding-left:10px; }
+.page-lideranca .lider-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:1rem; }
+.page-lideranca .lider-tag { font-size:10px; padding:3px 10px; border-radius:20px; background:var(--bordo-light); color:var(--bordo-dark); border:0.5px solid rgba(123,28,62,0.2); }
+.page-lideranca .lider-quote { font-size:15px; color:var(--gray-text); font-style:italic; line-height:1.7; border-left:3px solid var(--bordo); padding:0.75rem 1rem; background:var(--bordo-light); border-radius:0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom:1.25rem; }
+.page-lideranca .lider-quote-author { font-size:11px; color:var(--gray-mid); font-style:normal; margin-top:6px; }
+
+/* Bio tabs area */
+.page-lideranca .bio-section { margin-top:1.5rem; }
+.page-lideranca .bio-label { font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-mid); margin-bottom:8px; font-weight:500; }
+.page-lideranca .bio-text { font-size:13px; color:var(--color-text-primary); line-height:1.8; }
+.page-lideranca .bio-text p { margin-bottom:1rem; }
+.page-lideranca .bio-text p:last-child { margin-bottom:0; }
+
+/* Conquistas / dados */
+.page-lideranca .conquistas-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:10px; margin-top:1.5rem; }
+.page-lideranca .conquista-card { background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:1rem; }
+.page-lideranca .conquista-label { font-size:10px; text-transform:uppercase; letter-spacing:0.07em; color:var(--gray-mid); margin-bottom:4px; }
+.page-lideranca .conquista-value { font-size:13px; font-weight:500; color:var(--gray-text); line-height:1.4; }
+
+/* Divisor entre líderes */
+.page-lideranca .lider-divider { height:8px; background:var(--bordo-light); border-top:0.5px solid rgba(123,28,62,0.12); border-bottom:0.5px solid rgba(123,28,62,0.12); }
+
+/* Timeline reconhecimentos */
+.page-lideranca .timeline { position:relative; padding-left:28px; }
+.page-lideranca .timeline::before { content:''; position:absolute; left:10px; top:8px; bottom:8px; width:1px; background:var(--color-border-tertiary); }
+.page-lideranca .tl-item { position:relative; margin-bottom:1.25rem; }
+.page-lideranca .tl-item:last-child { margin-bottom:0; }
+.page-lideranca .tl-dot { position:absolute; left:-22px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--bordo); border:2px solid white; box-shadow:0 0 0 1px var(--bordo); }
+.page-lideranca .tl-dot-shirin { background:#5a1230; box-shadow:0 0 0 1px #5a1230; }
+.page-lideranca .tl-date { font-size:10px; text-transform:uppercase; letter-spacing:0.07em; color:var(--bordo); font-weight:500; margin-bottom:2px; }
+.page-lideranca .tl-who { display:inline-block; font-size:9px; padding:1px 7px; border-radius:10px; margin-left:6px; }
+.page-lideranca .tl-who-franco { background:var(--bordo-light); color:var(--bordo-dark); }
+.page-lideranca .tl-who-shirin { background:#ede8f5; color:#3C3489; }
+.page-lideranca .tl-who-inst { background:var(--color-background-secondary); color:var(--gray-mid); }
+.page-lideranca .tl-title { font-size:13px; font-weight:500; color:var(--gray-text); margin-bottom:2px; line-height:1.4; }
+.page-lideranca .tl-desc { font-size:11px; color:var(--gray-mid); line-height:1.5; }
+.page-lideranca .tl-source { font-size:9px; color:var(--gray-mid); margin-top:2px; font-style:italic; }
+
+/* CTA Selo */
+.page-lideranca .cta-selo { background:var(--bordo); border-radius:var(--border-radius-lg); padding:2rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.page-lideranca .cta-selo h3 { font-size:17px; font-weight:500; color:white; margin-bottom:6px; }
+.page-lideranca .cta-selo p { font-size:13px; color:rgba(255,255,255,0.72); line-height:1.6; max-width:380px; }
+.page-lideranca .cta-selo-btn { background:white; color:var(--bordo); font-size:12px; font-weight:500; padding:10px 20px; border-radius:var(--border-radius-md); border:none; white-space:nowrap; flex-shrink:0; }

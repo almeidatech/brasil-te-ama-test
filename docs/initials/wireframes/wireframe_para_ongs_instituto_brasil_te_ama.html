@@ -1,0 +1,290 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bordo: #7B1C3E; --bordo-light: #f5eaee; --bordo-dark: #5a1230;
+  --gray-text: #3d3b38; --gray-mid: #6b6966; --gray-light: #f5f4f1; --white: #ffffff;
+}
+body { font-family: var(--font-sans); background: transparent; }
+.section { padding: 2rem 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.section-label {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray-mid); margin-bottom: 1rem; font-weight: 500;
+  display: flex; align-items: center; gap: 6px;
+}
+.section-label::before { content:''; display:inline-block; width:20px; height:1px; background:var(--gray-mid); }
+.annotation { font-size:10px; color:#185FA5; background:#E6F1FB; border:0.5px solid #85B7EB; border-radius:3px; padding:2px 7px; display:inline-block; margin-top:4px; }
+.pending { color:#854F0B; background:#FAEEDA; border-color:#EF9F27; }
+.ready { color:#3B6D11; background:#EAF3DE; border-color:#97C459; }
+
+.nav { display:flex; align-items:center; justify-content:space-between; padding:14px 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); background:var(--white); }
+.nav-logo { display:flex; align-items:center; gap:10px; }
+.logo-box { width:36px; height:36px; border-radius:4px; background:var(--bordo); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; color:white; }
+.logo-name { font-size:13px; font-weight:500; color:var(--gray-text); }
+.nav-links { display:flex; gap:16px; font-size:12px; color:var(--gray-mid); }
+.nav-active { color:var(--bordo); font-weight:500; border-bottom:1.5px solid var(--bordo); padding-bottom:2px; }
+.nav-cta { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:7px 16px; border-radius:var(--border-radius-md); border:none; }
+
+/* Hero */
+.hero { background:var(--bordo); padding:3rem 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); }
+.hero-eyebrow { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:.75rem; font-weight:500; }
+.hero-headline { font-size:26px; font-weight:500; color:white; line-height:1.35; max-width:520px; margin-bottom:1rem; }
+.hero-sub { font-size:13px; color:rgba(255,255,255,0.72); line-height:1.75; max-width:500px; margin-bottom:1.5rem; }
+.hero-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.btn-primary { background:white; color:var(--bordo); font-size:13px; font-weight:500; padding:10px 24px; border-radius:var(--border-radius-md); border:none; }
+.btn-ghost { background:transparent; color:rgba(255,255,255,0.65); font-size:13px; padding:10px 0; border:none; }
+
+/* O que oferecemos */
+.oferta-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.oferta-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1.25rem; }
+.oferta-icon { width:36px; height:36px; border-radius:var(--border-radius-md); background:var(--bordo-light); display:flex; align-items:center; justify-content:center; margin-bottom:10px; }
+.oferta-title { font-size:13px; font-weight:500; color:var(--gray-text); margin-bottom:4px; }
+.oferta-text { font-size:12px; color:var(--gray-mid); line-height:1.5; }
+.oferta-nota { font-size:10px; color:var(--bordo); margin-top:6px; font-style:italic; }
+
+/* Como funciona */
+.passos { display:flex; flex-direction:column; gap:0; }
+.passo { display:flex; gap:16px; padding:1.25rem 0; border-bottom:0.5px solid var(--color-border-tertiary); align-items:flex-start; }
+.passo:last-child { border-bottom:none; }
+.passo-num { width:32px; height:32px; border-radius:50%; background:var(--bordo); color:white; font-size:13px; font-weight:500; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.passo-title { font-size:14px; font-weight:500; color:var(--gray-text); margin-bottom:4px; }
+.passo-desc { font-size:13px; color:var(--gray-mid); line-height:1.6; }
+
+/* Elegibilidade */
+.elegibilidade { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.elegivel-title { font-size:12px; font-weight:500; color:var(--gray-text); margin-bottom:10px; padding-bottom:8px; border-bottom:0.5px solid var(--color-border-tertiary); }
+.elegivel-item { display:flex; gap:8px; align-items:flex-start; margin-bottom:8px; }
+.dot-ok { width:6px; height:6px; border-radius:50%; background:#639922; flex-shrink:0; margin-top:4px; }
+.dot-no { width:6px; height:6px; border-radius:50%; background:#E24B4A; flex-shrink:0; margin-top:4px; }
+.elegivel-text { font-size:12px; color:var(--gray-mid); line-height:1.5; }
+
+/* Compromissos */
+.compromissos-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.comp-card { background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:1rem; border-left:3px solid var(--bordo); border-radius:0; }
+.comp-titulo { font-size:12px; font-weight:500; color:var(--gray-text); margin-bottom:4px; }
+.comp-texto { font-size:11px; color:var(--gray-mid); line-height:1.5; }
+
+/* Formulário */
+.form-section { background:var(--gray-light); padding:2rem 1.5rem; border-top:0.5px solid var(--color-border-tertiary); border-bottom:0.5px solid var(--color-border-tertiary); }
+.form-title { font-size:18px; font-weight:500; color:var(--gray-text); margin-bottom:6px; }
+.form-sub { font-size:13px; color:var(--gray-mid); margin-bottom:1.5rem; line-height:1.6; }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.form-field { background:white; border:0.5px solid var(--color-border-secondary); border-radius:var(--border-radius-md); padding:10px 14px; font-size:12px; color:var(--gray-mid); }
+.form-field-full { grid-column:1/-1; }
+.form-submit { grid-column:1/-1; background:var(--bordo); color:white; font-size:13px; font-weight:500; padding:12px; border-radius:var(--border-radius-md); border:none; }
+.form-note { grid-column:1/-1; font-size:10px; color:var(--gray-mid); line-height:1.6; }
+
+/* FAQ */
+.faq-item { border-bottom:0.5px solid var(--color-border-tertiary); padding:1rem 0; }
+.faq-item:last-child { border-bottom:none; }
+.faq-q { font-size:13px; font-weight:500; color:var(--gray-text); margin-bottom:6px; }
+.faq-a { font-size:12px; color:var(--gray-mid); line-height:1.65; }
+.faq-nota { font-size:11px; color:var(--bordo); margin-top:4px; font-style:italic; }
+
+/* CTA Selo */
+.cta-selo { background:var(--bordo); border-radius:var(--border-radius-lg); padding:1.75rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.cta-selo h3 { font-size:16px; font-weight:500; color:white; margin-bottom:6px; }
+.cta-selo p { font-size:12px; color:rgba(255,255,255,0.72); line-height:1.6; max-width:380px; }
+.cta-selo-btn { background:white; color:var(--bordo); font-size:12px; font-weight:500; padding:10px 20px; border-radius:var(--border-radius-md); border:none; white-space:nowrap; flex-shrink:0; }
+</style>
+
+<h2 class="sr-only">Wireframe da página Para ONGs — Instituto Brasil Te Ama — critérios, formulário de cadastro e FAQ</h2>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="logo-box">IBtA</div>
+    <div class="logo-name">Instituto Brasil Te Ama</div>
+  </div>
+  <div class="nav-links">
+    <span>Home</span><span>Sobre</span><span>Liderança</span><span>Selo Brasil Te Ama</span>
+    <span>Projetos</span><span>Notícias</span><span>Transparência</span>
+    <span class="nav-active">Para ONGs</span>
+  </div>
+  <button class="nav-cta">Quero ser parceiro</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Para ONGs institucionais</div>
+  <h1 class="hero-headline">Sua ONG pode receber apoio da rede Brasil Te Ama.</h1>
+  <p class="hero-sub">O Instituto Brasil Te Ama identifica ONGs institucionais sérias, verifica sua atuação e direciona os recursos gerados pelo Programa Selo para organizações que já estão na ponta — preservando sua autonomia e protagonismo.</p>
+  <div class="hero-actions">
+    <button class="btn-primary">Cadastrar minha ONG</button>
+    <button class="btn-ghost">Entender os critérios ↓</button>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 1 — O que o Instituto oferece às ONGs</div>
+  <div class="oferta-grid">
+    <div class="oferta-card">
+      <div class="oferta-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v14M2 9h14" stroke="#7B1C3E" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="oferta-title">Apoio financeiro ou estrutural</div>
+      <div class="oferta-text">Recursos gerados pelo Programa Selo Brasil Te Ama são direcionados a ONGs cadastradas — em formato financeiro ou de suprimentos, conforme definido caso a caso.</div>
+      <div class="oferta-nota">Tipo e volume de apoio definidos após análise institucional. O cadastro não garante apoio imediato.</div>
+    </div>
+    <div class="oferta-card">
+      <div class="oferta-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="#7B1C3E" stroke-width="1.2"/><path d="M6 9l2 2 4-4" stroke="#7B1C3E" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="oferta-title">Visibilidade institucional</div>
+      <div class="oferta-text">ONGs apoiadas são mencionadas nas comunicações públicas do Instituto — no site, relatórios e materiais de divulgação do programa, com critério e respeito.</div>
+      <div class="oferta-nota">Somente após formalização da parceria e autorização expressa da ONG.</div>
+    </div>
+    <div class="oferta-card">
+      <div class="oferta-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9l4 4 8-8" stroke="#7B1C3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="oferta-title">Chancela de parceria</div>
+      <div class="oferta-text">A associação ao Instituto Brasil Te Ama e ao OSJ Knights of Malta confere credibilidade adicional à ONG junto a doadores, parceiros e órgãos públicos.</div>
+      <div class="oferta-nota">Uso da chancela regulado por termo específico — não é automático.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 2 — Como funciona o processo</div>
+  <div class="passos">
+    <div class="passo">
+      <div class="passo-num">1</div>
+      <div>
+        <div class="passo-title">Preenchimento do formulário de cadastro</div>
+        <div class="passo-desc">A ONG preenche o formulário desta página com dados institucionais, área de atuação e descrição do trabalho realizado. Nenhum documento é exigido nesta etapa — apenas informações básicas para uma primeira avaliação.</div>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">2</div>
+      <div>
+        <div class="passo-title">Análise institucional pelo Instituto</div>
+        <div class="passo-desc">O Instituto Brasil Te Ama avalia o cadastro com base nos critérios públicos de elegibilidade — CNPJ ativo, atuação compatível, ausência de irregularidade grave e disposição para prestação de contas. A análise é conduzida pela equipe interna.</div>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">3</div>
+      <div>
+        <div class="passo-title">Retorno e próximos passos</div>
+        <div class="passo-desc">O Instituto retorna com parecer em até 15 dias úteis. ONGs aprovadas na triagem inicial avançam para uma conversa mais aprofundada sobre formato, volume e condições do apoio. ONGs não aprovadas recebem retorno com orientação quando possível.</div>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">4</div>
+      <div>
+        <div class="passo-title">Formalização e acompanhamento</div>
+        <div class="passo-desc">Com a aprovação, é assinado um termo de parceria que define as condições do apoio, as obrigações de prestação de contas e os canais de comunicação entre o Instituto e a ONG. O acompanhamento é periódico.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 3 — Critérios de elegibilidade</div>
+  <div class="elegibilidade">
+    <div>
+      <div class="elegivel-title">Critérios obrigatórios</div>
+      <div class="elegivel-item"><div class="dot-ok"></div><div class="elegivel-text">CNPJ ativo e regular, sem restrições cadastrais graves</div></div>
+      <div class="elegivel-item"><div class="dot-ok"></div><div class="elegivel-text">Atuação comprovada em área compatível com os valores do Instituto</div></div>
+      <div class="elegivel-item"><div class="dot-ok"></div><div class="elegivel-text">Ausência de histórico público de irregularidade grave ou desvio de recursos</div></div>
+      <div class="elegivel-item"><div class="dot-ok"></div><div class="elegivel-text">Abertura para prestação de contas junto ao Instituto</div></div>
+      <div class="elegivel-item"><div class="dot-ok"></div><div class="elegivel-text">Capacidade de receber apoio e aplicá-lo de forma verificável</div></div>
+    </div>
+    <div>
+      <div class="elegivel-title">Critérios que aumentam a prioridade</div>
+      <div class="elegivel-item"><div class="dot-ok"></div><div class="elegivel-text">Histórico de atuação consistente e tempo de existência relevante</div></div>
+      <div class="elegivel-item"><div class="dot-ok"></div><div class="elegivel-text">Presença pública verificável — site, redes sociais ou relatórios</div></div>
+      <div class="elegivel-item"><div class="dot-ok"></div><div class="elegivel-text">Cobertura geográfica estratégica ou complementar às ONGs já apoiadas</div></div>
+      <div class="elegivel-item"><div class="dot-ok"></div><div class="elegivel-text">Alinhamento temático com as frentes prioritárias do Instituto</div></div>
+      <div class="elegivel-title" style="margin-top:1rem;">Situações que impedem a aprovação</div>
+      <div class="elegivel-item"><div class="dot-no"></div><div class="elegivel-text">CNPJ inativo ou com irregularidade grave não sanada</div></div>
+      <div class="elegivel-item"><div class="dot-no"></div><div class="elegivel-text">Histórico de desvio de recursos ou irregularidade institucional documentada</div></div>
+      <div class="elegivel-item"><div class="dot-no"></div><div class="elegivel-text">Atuação incompatível com os valores do Instituto Brasil Te Ama</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 4 — O que a ONG assume ao se cadastrar</div>
+  <div class="compromissos-grid">
+    <div class="comp-card">
+      <div class="comp-titulo">Prestação de contas periódica</div>
+      <div class="comp-texto">A ONG compromete-se a fornecer informações sobre a aplicação dos recursos recebidos — no formato e na periodicidade definidos no termo de parceria.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-titulo">Comunicação responsável</div>
+      <div class="comp-texto">O nome e a marca do Instituto Brasil Te Ama só podem ser associados ao trabalho da ONG com autorização prévia e nos termos definidos pelo Instituto.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-titulo">Conduta pública compatível</div>
+      <div class="comp-texto">A ONG mantém conduta pública alinhada aos valores da rede — respeito, transparência e dignidade das pessoas atendidas em todas as suas comunicações.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-titulo">Autonomia preservada</div>
+      <div class="comp-texto">O Instituto não interfere na gestão ou nas decisões internas da ONG. A parceria se limita ao apoio acordado e ao acompanhamento dos recursos direcionados.</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-section">
+  <div class="form-title">Formulário de cadastro de ONG</div>
+  <div class="form-sub">Preencha os dados abaixo. O cadastro não garante apoio imediato — é o início de uma avaliação institucional. Nossa equipe retorna em até 15 dias úteis.</div>
+  <div class="form-grid">
+    <div class="form-field">Nome da ONG</div>
+    <div class="form-field">CNPJ</div>
+    <div class="form-field">Área de atuação principal</div>
+    <div class="form-field">Estado e cidade de atuação</div>
+    <div class="form-field">Ano de fundação</div>
+    <div class="form-field">Número aproximado de beneficiados</div>
+    <div class="form-field">Nome do responsável pelo cadastro</div>
+    <div class="form-field">Cargo</div>
+    <div class="form-field">E-mail institucional</div>
+    <div class="form-field">Telefone / WhatsApp</div>
+    <div class="form-field">Site ou rede social da ONG (se houver)</div>
+    <div class="form-field">Tipo de apoio de interesse (financeiro · suprimentos · ambos · a definir)</div>
+    <div class="form-field form-field-full" style="min-height:80px;">Descrição do trabalho — descreva brevemente o que a ONG faz, quem atende e como opera</div>
+    <div class="form-submit">Enviar cadastro →</div>
+    <div class="form-note">O envio deste formulário não garante aprovação ou apoio imediato. O Instituto Brasil Te Ama avaliará o cadastro com base nos critérios públicos de elegibilidade e retornará em até 15 dias úteis. · atendimento@institutobrasilteama.org · (61) 3321-2535</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 6 — FAQ para ONGs</div>
+  <div class="faq-item">
+    <div class="faq-q">O cadastro garante que minha ONG receberá apoio?</div>
+    <div class="faq-a">Não. O formulário de cadastro inicia uma avaliação institucional. Somente após análise, aprovação e assinatura do termo de parceria a ONG passa a integrar formalmente a rede e pode receber recursos.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Que tipo de apoio o Instituto oferece?</div>
+    <div class="faq-a">O apoio pode ser financeiro, em suprimentos ou de outra natureza — conforme as necessidades da ONG e a disponibilidade de recursos do programa em cada ciclo. O formato é definido após a aprovação e conversas com a equipe do Instituto.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">O Instituto interfere na gestão da minha ONG?</div>
+    <div class="faq-a">Não. A parceria se limita ao apoio acordado e ao acompanhamento da aplicação dos recursos. O Instituto preserva a autonomia e o protagonismo de cada ONG parceira.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Minha ONG precisa ter CEBAS para se cadastrar?</div>
+    <div class="faq-a">Não é obrigatório. O Instituto avalia a regularidade documental e a atuação real da ONG — CEBAS e outros títulos são considerados na priorização, mas não são pré-requisitos absolutos para o cadastro.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Posso usar o nome do Instituto em minhas comunicações após o cadastro?</div>
+    <div class="faq-a">Não. O uso do nome, da marca e de qualquer elemento do Instituto Brasil Te Ama depende de autorização prévia e é regulado pelo termo de parceria. O cadastro não autoriza nenhum uso público da associação.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Em quanto tempo recebo retorno após o cadastro?</div>
+    <div class="faq-a">O Instituto Brasil Te Ama retorna em até 15 dias úteis após o recebimento do cadastro. ONGs que avançarem na avaliação inicial serão convidadas para uma conversa mais aprofundada.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Como é feito o acompanhamento após a aprovação?</div>
+    <div class="faq-a">O acompanhamento é definido no termo de parceria — com periodicidade, formato de prestação de contas e canal de comunicação entre o Instituto e a ONG. O Instituto não interfere na operação, mas acompanha a aplicação dos recursos.</div>
+  </div>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="section-label">CTA — Empresas que querem apoiar</div>
+  <div class="cta-selo">
+    <div>
+      <h3>Sua empresa pode gerar os recursos que chegam aqui</h3>
+      <p>Ao aderir ao Programa Selo Brasil Te Ama, empresas parceiras criam o fluxo de apoio que chega às ONGs cadastradas — com transparência, critério e prestação de contas.</p>
+    </div>
+    <button class="cta-selo-btn">Quero ser parceiro →</button>
+  </div>
+</div>

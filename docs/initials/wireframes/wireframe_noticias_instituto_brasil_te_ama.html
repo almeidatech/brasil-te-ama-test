@@ -1,0 +1,281 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bordo: #7B1C3E; --bordo-light: #f5eaee; --bordo-dark: #5a1230;
+  --gray-text: #3d3b38; --gray-mid: #6b6966; --gray-light: #f5f4f1; --white: #ffffff;
+}
+body { font-family: var(--font-sans); background: transparent; }
+.section { padding: 2rem 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.section-label {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray-mid); margin-bottom: 1rem; font-weight: 500;
+  display: flex; align-items: center; gap: 6px;
+}
+.section-label::before { content:''; display:inline-block; width:20px; height:1px; background:var(--gray-mid); }
+.annotation { font-size:10px; color:#185FA5; background:#E6F1FB; border:0.5px solid #85B7EB; border-radius:3px; padding:2px 7px; display:inline-block; margin-top:4px; }
+.pending { color:#854F0B; background:#FAEEDA; border-color:#EF9F27; }
+.ready { color:#3B6D11; background:#EAF3DE; border-color:#97C459; }
+
+.nav { display:flex; align-items:center; justify-content:space-between; padding:14px 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); background:var(--white); }
+.nav-logo { display:flex; align-items:center; gap:10px; }
+.logo-box { width:36px; height:36px; border-radius:4px; background:var(--bordo); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; color:white; }
+.logo-name { font-size:13px; font-weight:500; color:var(--gray-text); }
+.nav-links { display:flex; gap:16px; font-size:12px; color:var(--gray-mid); }
+.nav-active { color:var(--bordo); font-weight:500; border-bottom:1.5px solid var(--bordo); padding-bottom:2px; }
+.nav-cta { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:7px 16px; border-radius:var(--border-radius-md); border:none; }
+
+.hero { background:var(--gray-light); padding:2.5rem 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); }
+.hero-eyebrow { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--bordo); margin-bottom:.75rem; font-weight:500; }
+.hero-headline { font-size:26px; font-weight:500; color:var(--gray-text); line-height:1.35; max-width:520px; margin-bottom:1rem; }
+.hero-sub { font-size:13px; color:var(--gray-mid); line-height:1.75; max-width:500px; }
+
+/* Aviso */
+.aviso-box { background:var(--bordo-light); border:0.5px solid rgba(123,28,62,0.15); border-radius:var(--border-radius-md); padding:1rem 1.25rem; margin-bottom:1.5rem; }
+.aviso-title { font-size:12px; font-weight:500; color:var(--bordo-dark); margin-bottom:4px; }
+.aviso-text { font-size:11px; color:#5a1230; line-height:1.6; }
+
+/* Filtros */
+.filtros { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem; }
+.filtro { font-size:11px; padding:5px 14px; border-radius:20px; border:0.5px solid var(--color-border-secondary); color:var(--gray-mid); }
+.filtro-active { background:var(--bordo); color:white; border-color:var(--bordo); }
+
+/* Card destaque */
+.card-destaque { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); overflow:hidden; display:grid; grid-template-columns:240px 1fr; margin-bottom:1.5rem; }
+.card-destaque-img { background:var(--gray-light); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-size:10px; color:var(--gray-mid); text-align:center; padding:1rem; border-right:0.5px solid var(--color-border-tertiary); }
+.card-destaque-body { padding:1.5rem; }
+.card-cat { display:inline-block; font-size:9px; text-transform:uppercase; letter-spacing:0.08em; padding:2px 9px; border-radius:10px; margin-bottom:10px; font-weight:500; }
+.cat-acoes { background:#EAF3DE; color:#3B6D11; }
+.cat-imprensa { background:#EEEDFE; color:#534AB7; }
+.cat-eventos { background:#FAEEDA; color:#854F0B; }
+.cat-parcerias { background:var(--bordo-light); color:var(--bordo-dark); }
+.card-title { font-size:16px; font-weight:500; color:var(--gray-text); line-height:1.4; margin-bottom:8px; }
+.card-resumo { font-size:13px; color:var(--gray-mid); line-height:1.65; margin-bottom:12px; }
+.card-meta { display:flex; align-items:center; gap:12px; font-size:11px; color:var(--gray-mid); }
+.card-fonte { font-size:10px; padding:2px 8px; border-radius:3px; background:var(--color-background-secondary); border:0.5px solid var(--color-border-tertiary); }
+.card-origem { font-size:9px; color:var(--gray-mid); font-style:italic; }
+
+/* Grid de cards */
+.cards-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; }
+.card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); overflow:hidden; }
+.card-img { height:72px; background:var(--gray-light); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:10px; color:var(--gray-mid); text-align:center; padding:8px; border-bottom:0.5px solid var(--color-border-tertiary); }
+.card-body { padding:12px 14px; }
+.card-body .card-title { font-size:13px; margin-bottom:6px; }
+.card-body .card-resumo { font-size:11px; margin-bottom:8px; }
+.card-body .card-meta { font-size:10px; }
+.card-link { font-size:11px; color:var(--bordo); margin-top:8px; display:block; }
+
+/* Seção imprensa */
+.imprensa-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; }
+.imprensa-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-md); padding:1rem; }
+.imprensa-source { font-size:9px; text-transform:uppercase; letter-spacing:0.08em; color:var(--bordo); font-weight:500; margin-bottom:4px; }
+.imprensa-title { font-size:12px; font-weight:500; color:var(--gray-text); line-height:1.4; margin-bottom:6px; }
+.imprensa-meta { font-size:10px; color:var(--gray-mid); }
+
+/* CTA newsletter */
+.cta-newsletter { background:var(--gray-light); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; margin-top:1rem; }
+.cta-newsletter-text h3 { font-size:15px; font-weight:500; color:var(--gray-text); margin-bottom:4px; }
+.cta-newsletter-text p { font-size:12px; color:var(--gray-mid); line-height:1.5; }
+.cta-newsletter-form { display:flex; gap:8px; align-items:center; flex-shrink:0; }
+.cta-newsletter-input { background:white; border:0.5px solid var(--color-border-secondary); border-radius:var(--border-radius-md); padding:8px 14px; font-size:12px; color:var(--gray-mid); width:200px; }
+.cta-newsletter-btn { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:8px 16px; border-radius:var(--border-radius-md); border:none; white-space:nowrap; }
+</style>
+
+<h2 class="sr-only">Wireframe da página Notícias — Instituto Brasil Te Ama — posts do site atual categorizados e clipping de imprensa</h2>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="logo-box">IBtA</div>
+    <div class="logo-name">Instituto Brasil Te Ama</div>
+  </div>
+  <div class="nav-links">
+    <span>Home</span><span>Sobre</span><span>Liderança</span><span>Selo Brasil Te Ama</span>
+    <span>Projetos</span><span class="nav-active">Notícias</span><span>Transparência</span><span>Contato</span>
+  </div>
+  <button class="nav-cta">Quero ser parceiro</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Notícias e atualizações</div>
+  <h1 class="hero-headline">O que o Instituto está fazendo — em tempo real.</h1>
+  <p class="hero-sub">Ações em campo, parcerias, eventos e cobertura de imprensa. Tudo documentado, com data e responsável identificado.</p>
+</div>
+
+<div class="section">
+  <div class="aviso-box">
+    <div class="aviso-title">O que foi aproveitado do site atual</div>
+    <div class="aviso-text">O site atual tem 9 posts publicados no blog entre abril e julho de 2025 — todos com conteúdo real, datas reais e ações verificáveis. Todos foram aproveitados, recategorizados e enriquecidos com metadados. Nenhum foi descartado. Os 4 links de imprensa confirmados (Defensoria DF, Agência Brasília, Metrópoles, Lo Scudo) foram adicionados como seção dedicada de clipping.</div>
+  </div>
+  <div class="filtros">
+    <div class="filtro filtro-active">Todas</div>
+    <div class="filtro">Ações em campo</div>
+    <div class="filtro">Parcerias</div>
+    <div class="filtro">Eventos</div>
+    <div class="filtro">Imprensa</div>
+  </div>
+
+  <div class="section-label">Destaque — notícia principal</div>
+  <div class="card-destaque">
+    <div class="card-destaque-img">
+      foto da ação<br>Rodoviária · DF
+      <span class="annotation ready" style="font-size:9px;margin-top:4px;">foto no site atual</span>
+    </div>
+    <div class="card-destaque-body">
+      <span class="card-cat cat-acoes">Ações em campo</span>
+      <div class="card-title">Dia de Cidadania e Solidariedade na Rodoviária do Plano Piloto: DPDF e Brasil Te Ama em Ação</div>
+      <div class="card-resumo">No dia 21 de maio de 2025, a Rodoviária do Plano Piloto foi palco da Quarta do Cidadão, promovida pela Defensoria Pública do DF em parceria com o Instituto Brasil Te Ama — levando serviços de cidadania, justiça e cuidado diretamente à população.</div>
+      <div class="card-meta">
+        <span>21 mai 2025</span>
+        <span class="card-fonte">Ações em campo</span>
+        <span class="card-origem">aproveitado do site atual</span>
+      </div>
+      <span class="card-link">Ler mais →</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Notícias recentes — todos os posts do site atual (2025)</div>
+  <div class="cards-grid">
+
+    <div class="card">
+      <div class="card-img">foto do evento<br><span class="annotation ready" style="font-size:9px;">foto no site atual</span></div>
+      <div class="card-body">
+        <span class="card-cat cat-eventos">Eventos</span>
+        <div class="card-title">Lançamento do Instituto Brasil Te Ama reúne convidados especiais</div>
+        <div class="card-resumo">Jantar de lançamento realizado na residência de Franco Nicoletti e Shirin Vafaein — noite de elegância, diálogo e engajamento social.</div>
+        <div class="card-meta"><span>27 mai 2025</span><span class="card-origem">aproveitado</span></div>
+        <span class="card-link">Ler mais →</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">foto da ação<br><span class="annotation ready" style="font-size:9px;">foto no site atual</span></div>
+      <div class="card-body">
+        <span class="card-cat cat-parcerias">Parcerias</span>
+        <div class="card-title">23ª Edição do Dia da Mulher — parceria com Defensoria Pública do DF</div>
+        <div class="card-resumo">Evento grandioso e transformador em parceria com a DPDF — mais de 1.000 serviços oferecidos à população feminina do DF.</div>
+        <div class="card-meta"><span>5 mai 2025</span><span class="card-origem">aproveitado</span></div>
+        <span class="card-link">Ler mais →</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">foto da ação<br><span class="annotation ready" style="font-size:9px;">foto no site atual</span></div>
+      <div class="card-body">
+        <span class="card-cat cat-acoes">Ações em campo</span>
+        <div class="card-title">Ação Social em Arrozal — cidadania e cuidado à comunidade do Córrego</div>
+        <div class="card-resumo">10 de maio de 2025 — parceria com DETRAN, DPDF, CAESB, GDF, Instituto Verônica Rodrigues e Secretaria de Desenvolvimento Social.</div>
+        <div class="card-meta"><span>11 mai 2025</span><span class="card-origem">aproveitado</span></div>
+        <span class="card-link">Ler mais →</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">foto da entrevista<br><span class="annotation ready" style="font-size:9px;">foto no site atual</span></div>
+      <div class="card-body">
+        <span class="card-cat cat-imprensa">Imprensa</span>
+        <div class="card-title">Instituto Brasil Te Ama na Rádio Sucesso — lançamento oficial</div>
+        <div class="card-resumo">11 de abril de 2025 — lançamento do Instituto no programa É Só Subindo, da Rádio Sucesso — primeira aparição pública na mídia.</div>
+        <div class="card-meta"><span>11 abr 2025</span><span class="card-origem">aproveitado</span></div>
+        <span class="card-link">Ler mais →</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">foto do atleta<br><span class="annotation ready" style="font-size:9px;">foto no site atual</span></div>
+      <div class="card-body">
+        <span class="card-cat cat-eventos">Eventos</span>
+        <div class="card-title">Encontro Inspirador com o Atleta Edilson</div>
+        <div class="card-resumo">Atleta amador de 75 anos compartilha conquistas em competições de corrida — medalhas e vitórias em Goiás apresentadas à equipe do Instituto.</div>
+        <div class="card-meta"><span>15 jul 2025</span><span class="card-origem">aproveitado</span></div>
+        <span class="card-link">Ler mais →</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">foto do evento<br><span class="annotation pending" style="font-size:9px;">foto a confirmar</span></div>
+      <div class="card-body">
+        <span class="card-cat cat-eventos">Eventos</span>
+        <div class="card-title">21ª Edição do World Police & Fire Games</div>
+        <div class="card-resumo">Participação institucional do Instituto Brasil Te Ama na 21ª edição do evento internacional.</div>
+        <div class="card-meta"><span>27 jul 2025</span><span class="card-origem">aproveitado</span></div>
+        <span class="card-link">Ler mais →</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">foto<br><span class="annotation pending" style="font-size:9px;">pendente</span></div>
+      <div class="card-body">
+        <span class="card-cat cat-acoes">Ações em campo</span>
+        <div class="card-title">Homenagem ao Dia das Mães — Instituto Brasil Te Ama</div>
+        <div class="card-resumo">Celebração do Dia das Mães com mensagem institucional de reconhecimento e cuidado.</div>
+        <div class="card-meta"><span>11 mai 2025</span><span class="card-origem">aproveitado</span></div>
+        <span class="card-link">Ler mais →</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">foto<br><span class="annotation pending" style="font-size:9px;">pendente</span></div>
+      <div class="card-body">
+        <span class="card-cat cat-acoes">Ações em campo</span>
+        <div class="card-title">Atleta amador de 75 anos brilha em competições de corrida em Goiás</div>
+        <div class="card-resumo">Edilson da Costa Dias conquista 1º lugar no Circuito Anapolino — história de superação apoiada pelo Instituto.</div>
+        <div class="card-meta"><span>1 abr 2025</span><span class="card-origem">aproveitado</span></div>
+        <span class="card-link">Ler mais →</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Clipping de imprensa — cobertura externa confirmada</div>
+  <div class="imprensa-grid">
+    <div class="imprensa-card">
+      <div class="imprensa-source">Defensoria Pública do DF · Institucional</div>
+      <div class="imprensa-title">Parceria entre DPDF e Instituto Brasil Te Ama amplia serviços da Quarta do Cidadão com assistência odontológica</div>
+      <div class="imprensa-meta">defensoria.df.gov.br · 2025 <span class="annotation ready" style="margin-left:4px;">link confirmado</span></div>
+    </div>
+    <div class="imprensa-card">
+      <div class="imprensa-source">Agência Brasília · Governo do DF</div>
+      <div class="imprensa-title">Serviços do evento Quarta do Cidadão são ampliados com assistência odontológica</div>
+      <div class="imprensa-meta">agenciabrasilia.df.gov.br · 2025 <span class="annotation ready" style="margin-left:4px;">link confirmado</span></div>
+    </div>
+    <div class="imprensa-card">
+      <div class="imprensa-source">Metrópoles · Grande imprensa</div>
+      <div class="imprensa-title">Quarta do Cidadão reúne serviços para homens vulneráveis</div>
+      <div class="imprensa-meta">metropoles.com · 2025 <span class="annotation ready" style="margin-left:4px;">link confirmado</span></div>
+    </div>
+    <div class="imprensa-card">
+      <div class="imprensa-source">Lo Scudo Magazine · Internacional</div>
+      <div class="imprensa-title">25 artigos publicados — trajetória e projetos do Instituto Brasil Te Ama</div>
+      <div class="imprensa-meta">loscudomagazine.it · 2024–2026 <span class="annotation ready" style="margin-left:4px;">confirmado</span></div>
+    </div>
+    <div class="imprensa-card">
+      <div class="imprensa-source">Última Hora Online</div>
+      <div class="imprensa-title">Fundador Franco Nicoletti e presidente Shirin Vafaein explicam como o Instituto conecta quem pode ajudar a quem precisa</div>
+      <div class="imprensa-meta">ultimahoraonline.com.br <span class="annotation ready" style="margin-left:4px;">link confirmado</span></div>
+    </div>
+    <div class="imprensa-card">
+      <div class="imprensa-source">Rádio Sucesso</div>
+      <div class="imprensa-title">Instituto Brasil Te Ama no programa É Só Subindo — lançamento oficial em entrevista ao vivo</div>
+      <div class="imprensa-meta">Rádio Sucesso · abr/2025 <span class="annotation pending" style="margin-left:4px;">link a confirmar</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="section-label">Atualizações e responsável editorial</div>
+  <div class="cta-newsletter">
+    <div class="cta-newsletter-text">
+      <h3>Fique por dentro das ações do Instituto</h3>
+      <p>Acompanhe projetos, parcerias e resultados diretamente no seu e-mail.<br>
+      <span class="annotation pending" style="font-size:9px;">responsável pela atualização contínua — a definir pela equipe</span></p>
+    </div>
+    <div class="cta-newsletter-form">
+      <div class="cta-newsletter-input">seu@email.com.br</div>
+      <button class="cta-newsletter-btn">Assinar →</button>
+    </div>
+  </div>
+</div>

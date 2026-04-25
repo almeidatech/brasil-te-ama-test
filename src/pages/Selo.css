@@ -1,0 +1,101 @@
+/* Page-scoped styles ported 1:1 from wireframe_selo_brasil_te_ama.html */
+.page-selo .section { padding: 2rem 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.page-selo .section-label {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray-mid); margin-bottom: 1rem; font-weight: 500;
+  display: flex; align-items: center; gap: 6px;
+}
+.page-selo .section-label::before { content:''; display:inline-block; width:20px; height:1px; background:var(--gray-mid); }
+
+/* Nav */
+.page-selo .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); background:var(--white); }
+.page-selo .nav-logo { display:flex; align-items:center; gap:10px; }
+.page-selo .logo-box { width:36px; height:36px; border-radius:4px; background:var(--bordo); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; color:white; }
+.page-selo .logo-name { font-size:13px; font-weight:500; color:var(--gray-text); }
+.page-selo .nav-links { display:flex; gap:16px; font-size:12px; color:var(--gray-mid); }
+.page-selo .nav-active { color:var(--bordo); font-weight:500; border-bottom:1.5px solid var(--bordo); padding-bottom:2px; }
+.page-selo .nav-cta { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:7px 16px; border-radius:var(--border-radius-md); border:none; }
+
+/* Hero Selo */
+.page-selo .hero-selo { background:var(--bordo); padding:3rem 1.5rem; }
+.page-selo .hero-eyebrow { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:1rem; }
+.page-selo .hero-headline { font-size:28px; font-weight:500; color:white; line-height:1.3; max-width:480px; margin-bottom:1rem; }
+.page-selo .hero-sub { font-size:14px; color:rgba(255,255,255,0.72); line-height:1.7; max-width:460px; margin-bottom:2rem; }
+.page-selo .hero-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.page-selo .btn-primary { background:white; color:var(--bordo); font-size:13px; font-weight:500; padding:10px 24px; border-radius:var(--border-radius-md); border:none; }
+.page-selo .btn-ghost { background:transparent; color:rgba(255,255,255,0.7); font-size:13px; padding:10px 0; border:none; }
+.page-selo .hero-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.1); border:0.5px solid rgba(255,255,255,0.2); border-radius:20px; padding:4px 12px; font-size:11px; color:rgba(255,255,255,0.7); margin-bottom:1.5rem; }
+
+/* Bloco o que é */
+.page-selo .oque-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; }
+.page-selo .oque-text { font-size:14px; color:var(--color-text-primary); line-height:1.8; }
+.page-selo .oque-callout { background:var(--bordo-light); border-left:3px solid var(--bordo); border-radius:0; padding:1.25rem; }
+.page-selo .oque-callout-title { font-size:13px; font-weight:500; color:var(--bordo-dark); margin-bottom:6px; }
+.page-selo .oque-callout-text { font-size:12px; color:#5a1230; line-height:1.6; }
+
+/* Bloco mecânica */
+.page-selo .passos { display:flex; flex-direction:column; gap:0; }
+.page-selo .passo { display:flex; gap:16px; padding:1.25rem 0; border-bottom:0.5px solid var(--color-border-tertiary); align-items:flex-start; }
+.page-selo .passo:last-child { border-bottom:none; }
+.page-selo .passo-num { width:32px; height:32px; border-radius:50%; background:var(--bordo); color:white; font-size:13px; font-weight:500; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.page-selo .passo-title { font-size:14px; font-weight:500; color:var(--gray-text); margin-bottom:4px; }
+.page-selo .passo-desc { font-size:13px; color:var(--gray-mid); line-height:1.6; }
+.page-selo .passo-note { font-size:11px; color:var(--bordo); margin-top:4px; font-style:italic; }
+
+/* Bloco recíproco */
+.page-selo .reciproco { background:var(--gray-light); border-radius:var(--border-radius-lg); padding:1.5rem; }
+.page-selo .reciproco-title { font-size:16px; font-weight:500; color:var(--gray-text); margin-bottom:8px; }
+.page-selo .reciproco-text { font-size:13px; color:var(--gray-mid); line-height:1.7; margin-bottom:1rem; }
+.page-selo .reciproco-destaque { background:white; border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-md); padding:1rem; font-size:13px; color:var(--gray-text); line-height:1.6; border-left:3px solid var(--bordo); border-radius:0; }
+
+/* Bloco benefícios */
+.page-selo .beneficios-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:12px; }
+.page-selo .beneficio-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1.25rem; }
+.page-selo .beneficio-icon { width:32px; height:32px; border-radius:var(--border-radius-md); background:var(--bordo-light); display:flex; align-items:center; justify-content:center; margin-bottom:10px; }
+.page-selo .beneficio-title { font-size:13px; font-weight:500; color:var(--gray-text); margin-bottom:4px; }
+.page-selo .beneficio-text { font-size:12px; color:var(--gray-mid); line-height:1.5; }
+
+/* Bloco quem pode */
+.page-selo .elegibilidade { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.page-selo .elegivel-col { }
+.page-selo .elegivel-title { font-size:13px; font-weight:500; color:var(--gray-text); margin-bottom:10px; border-bottom:0.5px solid var(--color-border-tertiary); padding-bottom:8px; }
+.page-selo .elegivel-item { display:flex; gap:8px; align-items:flex-start; margin-bottom:8px; font-size:12px; color:var(--gray-mid); line-height:1.5; }
+.page-selo .dot-ok { width:6px; height:6px; border-radius:50%; background:#639922; flex-shrink:0; margin-top:4px; }
+.page-selo .dot-no { width:6px; height:6px; border-radius:50%; background:#E24B4A; flex-shrink:0; margin-top:4px; }
+
+/* Bloco comparativo */
+.page-selo .comparativo { border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); overflow:hidden; }
+.page-selo .comp-header { display:grid; grid-template-columns:1fr 1fr 1fr; background:var(--color-background-secondary); }
+.page-selo .comp-th { padding:10px 14px; font-size:11px; font-weight:500; color:var(--gray-mid); letter-spacing:0.04em; border-right:0.5px solid var(--color-border-tertiary); }
+.page-selo .comp-th:last-child { border-right:none; }
+.page-selo .comp-th.destaque { background:var(--bordo); color:white; }
+.page-selo .comp-row { display:grid; grid-template-columns:1fr 1fr 1fr; border-top:0.5px solid var(--color-border-tertiary); }
+.page-selo .comp-cell { padding:10px 14px; font-size:12px; color:var(--gray-mid); border-right:0.5px solid var(--color-border-tertiary); line-height:1.4; }
+.page-selo .comp-cell:last-child { border-right:none; }
+.page-selo .comp-cell.destaque { background:var(--bordo-light); color:#5a1230; font-weight:500; }
+
+/* FAQ */
+.page-selo .faq-item { border-bottom:0.5px solid var(--color-border-tertiary); padding:1rem 0; }
+.page-selo .faq-item:last-child { border-bottom:none; }
+.page-selo .faq-q { font-size:13px; font-weight:500; color:var(--gray-text); margin-bottom:6px; }
+.page-selo .faq-a { font-size:12px; color:var(--gray-mid); line-height:1.6; }
+.page-selo .faq-note { font-size:11px; color:var(--bordo); margin-top:4px; font-style:italic; }
+
+/* Governança */
+.page-selo .gov-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.page-selo .gov-card { background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:1rem; }
+.page-selo .gov-label { font-size:10px; text-transform:uppercase; letter-spacing:0.07em; color:var(--gray-mid); margin-bottom:4px; }
+.page-selo .gov-value { font-size:13px; font-weight:500; color:var(--gray-text); line-height:1.4; }
+
+/* Formulário */
+.page-selo .form-section { background:var(--bordo); padding:2.5rem 1.5rem; }
+.page-selo .form-title { font-size:22px; font-weight:500; color:white; margin-bottom:8px; }
+.page-selo .form-sub { font-size:13px; color:rgba(255,255,255,0.7); margin-bottom:1.5rem; line-height:1.6; }
+.page-selo .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.page-selo .form-field { background:rgba(255,255,255,0.08); border:0.5px solid rgba(255,255,255,0.2); border-radius:var(--border-radius-md); padding:10px 14px; font-size:12px; color:rgba(255,255,255,0.5); }
+.page-selo .form-field-full { grid-column:1/-1; }
+.page-selo .form-submit { grid-column:1/-1; background:white; color:var(--bordo); font-size:13px; font-weight:500; padding:12px; border-radius:var(--border-radius-md); border:none; margin-top:4px; }
+.page-selo .form-note { grid-column:1/-1; font-size:10px; color:rgba(255,255,255,0.4); line-height:1.6; }
+
+/* Rodapé nota jurídica */
+.page-selo .nota-juridica { background:var(--color-background-secondary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-md); padding:1rem 1.25rem; font-size:11px; color:var(--gray-mid); line-height:1.6; margin-top:1rem; }

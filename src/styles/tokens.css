@@ -1,0 +1,43 @@
+/* Shared brand tokens + design system variables used by all wireframes. */
+:root {
+  --bordo: #7B1C3E;
+  --bordo-light: #f5eaee;
+  --bordo-dark: #5a1230;
+  --gold: #C9A84C;
+  --gray-text: #3d3b38;
+  --gray-mid: #6b6966;
+  --gray-light: #f5f4f1;
+  --white: #ffffff;
+
+  /* Design system tokens referenced by the wireframes. */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --color-border-tertiary: #e5e3df;
+  --color-text-primary: #2c2a26;
+  --color-text-secondary: #6b6966;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f9f8f5;
+  --border-radius-md: 6px;
+  --border-radius-lg: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: var(--color-background-primary); }
+body { font-family: var(--font-sans); color: var(--color-text-primary); }
+
+button { cursor: pointer; font-family: inherit; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* Annotation chips used across all wireframes. */
+.annotation {
+  font-size: 10px; color: #185FA5; background: #E6F1FB;
+  border: 0.5px solid #85B7EB; border-radius: 3px;
+  padding: 2px 7px; display: inline-block; margin-top: 4px;
+}
+.annotation.pending { color: #854F0B; background: #FAEEDA; border-color: #EF9F27; }
+.annotation.ready { color: #3B6D11; background: #EAF3DE; border-color: #97C459; }

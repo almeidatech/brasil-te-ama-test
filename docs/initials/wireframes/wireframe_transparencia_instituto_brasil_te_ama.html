@@ -1,0 +1,415 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bordo: #7B1C3E; --bordo-light: #f5eaee; --bordo-dark: #5a1230;
+  --gray-text: #3d3b38; --gray-mid: #6b6966; --gray-light: #f5f4f1; --white: #ffffff;
+}
+body { font-family: var(--font-sans); background: transparent; }
+.section { padding: 2rem 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.section-label {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray-mid); margin-bottom: 1rem; font-weight: 500;
+  display: flex; align-items: center; gap: 6px;
+}
+.section-label::before { content:''; display:inline-block; width:20px; height:1px; background:var(--gray-mid); }
+.annotation { font-size:10px; color:#185FA5; background:#E6F1FB; border:0.5px solid #85B7EB; border-radius:3px; padding:2px 7px; display:inline-block; margin-top:4px; }
+.pending { color:#854F0B; background:#FAEEDA; border-color:#EF9F27; }
+.ready { color:#3B6D11; background:#EAF3DE; border-color:#97C459; }
+
+.nav { display:flex; align-items:center; justify-content:space-between; padding:14px 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); background:var(--white); }
+.nav-logo { display:flex; align-items:center; gap:10px; }
+.logo-box { width:36px; height:36px; border-radius:4px; background:var(--bordo); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; color:white; }
+.logo-name { font-size:13px; font-weight:500; color:var(--gray-text); }
+.nav-links { display:flex; gap:16px; font-size:12px; color:var(--gray-mid); }
+.nav-active { color:var(--bordo); font-weight:500; border-bottom:1.5px solid var(--bordo); padding-bottom:2px; }
+.nav-cta { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:7px 16px; border-radius:var(--border-radius-md); border:none; }
+
+/* Hero */
+.hero { background:var(--gray-light); padding:2.5rem 1.5rem; border-bottom:0.5px solid var(--color-border-tertiary); }
+.hero-eyebrow { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--bordo); margin-bottom:.75rem; font-weight:500; }
+.hero-headline { font-size:26px; font-weight:500; color:var(--gray-text); line-height:1.35; max-width:520px; margin-bottom:1rem; }
+.hero-sub { font-size:13px; color:var(--gray-mid); line-height:1.75; max-width:500px; }
+
+/* Compromisso */
+.compromisso { background:var(--bordo); border-radius:var(--border-radius-lg); padding:1.5rem; margin-bottom:1.5rem; }
+.compromisso-title { font-size:15px; font-weight:500; color:white; margin-bottom:8px; }
+.compromisso-text { font-size:13px; color:rgba(255,255,255,0.75); line-height:1.75; }
+
+/* Indicadores */
+.indicadores-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:10px; margin-bottom:1rem; }
+.indicador { background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:1rem; }
+.ind-num { font-size:26px; font-weight:500; color:var(--bordo); line-height:1; margin-bottom:4px; }
+.ind-label { font-size:11px; color:var(--gray-mid); line-height:1.4; margin-bottom:4px; }
+.ind-fonte { font-size:9px; color:var(--gray-mid); font-style:italic; }
+.ind-pending { font-size:10px; color:#854F0B; background:#FAEEDA; border:0.5px solid #EF9F27; border-radius:3px; padding:1px 6px; display:inline-block; margin-top:2px; }
+
+/* Geo */
+.geo-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+.geo-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-md); padding:1rem; }
+.geo-flag { font-size:11px; font-weight:500; color:var(--bordo); margin-bottom:4px; }
+.geo-desc { font-size:12px; color:var(--gray-mid); line-height:1.5; }
+.geo-tipo { font-size:9px; text-transform:uppercase; letter-spacing:0.06em; color:var(--gray-mid); margin-bottom:4px; }
+
+/* Ações destaque */
+.acoes-list { display:flex; flex-direction:column; gap:0; }
+.acao-item { display:flex; gap:14px; align-items:flex-start; padding:1rem 0; border-bottom:0.5px solid var(--color-border-tertiary); }
+.acao-item:last-child { border-bottom:none; }
+.acao-num { font-size:20px; font-weight:500; color:var(--bordo); min-width:28px; line-height:1; }
+.acao-title { font-size:13px; font-weight:500; color:var(--gray-text); margin-bottom:3px; }
+.acao-desc { font-size:12px; color:var(--gray-mid); line-height:1.5; }
+.acao-meta { display:flex; gap:8px; align-items:center; margin-top:4px; }
+.acao-local { font-size:10px; color:var(--gray-mid); }
+.acao-fonte { font-size:9px; padding:1px 7px; border-radius:3px; background:var(--bordo-light); color:var(--bordo-dark); }
+
+/* Parceiros */
+.parceiros-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.parceiro { background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:1rem; }
+.parceiro-tipo { font-size:9px; text-transform:uppercase; letter-spacing:0.07em; color:var(--bordo); margin-bottom:4px; font-weight:500; }
+.parceiro-nome { font-size:12px; font-weight:500; color:var(--gray-text); line-height:1.4; margin-bottom:2px; }
+.parceiro-proj { font-size:11px; color:var(--gray-mid); }
+
+/* ONGs */
+.ongs-placeholder { background:var(--gray-light); border:0.5px dashed var(--color-border-secondary); border-radius:var(--border-radius-lg); padding:2rem; text-align:center; }
+.ongs-title { font-size:14px; font-weight:500; color:var(--gray-text); margin-bottom:6px; }
+.ongs-text { font-size:12px; color:var(--gray-mid); line-height:1.6; max-width:420px; margin:0 auto; }
+
+/* Critérios */
+.criterios-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.criterio-col-title { font-size:12px; font-weight:500; color:var(--gray-text); margin-bottom:10px; padding-bottom:8px; border-bottom:0.5px solid var(--color-border-tertiary); }
+.criterio-item { display:flex; gap:8px; align-items:flex-start; margin-bottom:8px; }
+.criterio-dot-alto { width:6px; height:6px; border-radius:50%; background:var(--bordo); flex-shrink:0; margin-top:4px; }
+.criterio-dot-med { width:6px; height:6px; border-radius:50%; background:#EF9F27; flex-shrink:0; margin-top:4px; }
+.criterio-text { font-size:12px; color:var(--gray-mid); line-height:1.5; }
+.criterio-peso { font-size:9px; color:var(--bordo); font-weight:500; }
+
+/* Política */
+.politica-box { background:var(--color-background-secondary); border-radius:var(--border-radius-lg); padding:1.5rem; }
+.politica-title { font-size:14px; font-weight:500; color:var(--gray-text); margin-bottom:10px; }
+.politica-text { font-size:13px; color:var(--gray-mid); line-height:1.75; }
+
+/* Relatório */
+.relatorio-box { border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.relatorio-icon { width:48px; height:48px; background:var(--bordo-light); border-radius:var(--border-radius-md); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.relatorio-title { font-size:14px; font-weight:500; color:var(--gray-text); margin-bottom:4px; }
+.relatorio-text { font-size:12px; color:var(--gray-mid); line-height:1.5; }
+.relatorio-btn { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:8px 16px; border-radius:var(--border-radius-md); border:none; white-space:nowrap; flex-shrink:0; }
+
+/* FAQ */
+.faq-item { border-bottom:0.5px solid var(--color-border-tertiary); padding:1rem 0; }
+.faq-item:last-child { border-bottom:none; }
+.faq-q { font-size:13px; font-weight:500; color:var(--gray-text); margin-bottom:6px; }
+.faq-a { font-size:12px; color:var(--gray-mid); line-height:1.65; }
+
+/* Nota jurídica */
+.nota-juridica { background:var(--color-background-secondary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-md); padding:1rem 1.25rem; font-size:11px; color:var(--gray-mid); line-height:1.6; }
+
+/* CTA ONGs */
+.cta-ongs { background:var(--bordo-light); border:0.5px solid rgba(123,28,62,0.15); border-radius:var(--border-radius-lg); padding:1.75rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.cta-ongs h3 { font-size:16px; font-weight:500; color:var(--bordo-dark); margin-bottom:6px; }
+.cta-ongs p { font-size:12px; color:#5a1230; line-height:1.6; max-width:380px; }
+.cta-ongs-btn { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:10px 20px; border-radius:var(--border-radius-md); border:none; white-space:nowrap; flex-shrink:0; }
+</style>
+
+<h2 class="sr-only">Wireframe da página Transparência — Instituto Brasil Te Ama — indicadores de impacto, parceiros, critérios de ONGs e política de prestação de contas</h2>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="logo-box">IBtA</div>
+    <div class="logo-name">Instituto Brasil Te Ama</div>
+  </div>
+  <div class="nav-links">
+    <span>Home</span><span>Sobre</span><span>Liderança</span><span>Selo Brasil Te Ama</span>
+    <span>Projetos</span><span>Notícias</span>
+    <span class="nav-active">Transparência</span>
+    <span>Contato</span>
+  </div>
+  <button class="nav-cta">Quero ser parceiro</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Transparência e prestação de contas</div>
+  <h1 class="hero-headline">Onde o dinheiro vai, quem é apoiado e como sabemos que funciona.</h1>
+  <p class="hero-sub">O Instituto Brasil Te Ama publica regularmente os dados de impacto, os parceiros confirmados e os critérios de seleção de ONGs. Transparência não é complemento — é a base de tudo.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">Compromisso público</div>
+  <div class="compromisso">
+    <div class="compromisso-title">Nossa política de transparência</div>
+    <p class="compromisso-text">O Instituto Brasil Te Ama publica relatórios periódicos sobre o destino dos apoios recebidos e o impacto das ações apoiadas. Nosso compromisso é com a comunicação clara, a prestação de contas responsável e o respeito às organizações e às pessoas que integram esta rede. Erros identificados em dados publicados são corrigidos publicamente — a transparência inclui a disposição de corrigir.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 1 — Painel de indicadores de impacto</div>
+  <div class="indicadores-grid">
+    <div class="indicador">
+      <div class="ind-num">+1.000</div>
+      <div class="ind-label">pessoas beneficiadas por mês no Distrito Federal</div>
+      <div class="ind-fonte">Lo Scudo Magazine · 2024–2025</div>
+    </div>
+    <div class="indicador">
+      <div class="ind-num">2</div>
+      <div class="ind-label">países com atuação operacional confirmada</div>
+      <div class="ind-fonte">Brasil e Nigéria</div>
+    </div>
+    <div class="indicador">
+      <div class="ind-num">4</div>
+      <div class="ind-label">países com presença institucional</div>
+      <div class="ind-fonte">Brasil, Nigéria, Itália, Alemanha</div>
+    </div>
+    <div class="indicador">
+      <div class="ind-num">10</div>
+      <div class="ind-label">frentes de atuação ativas identificadas</div>
+      <div class="ind-fonte">Lo Scudo Magazine · jun/2025</div>
+    </div>
+    <div class="indicador">
+      <div class="ind-num">2022</div>
+      <div class="ind-label">ano de fundação formal do Instituto</div>
+      <div class="ind-fonte">CNPJ: 49.458.362/0001-10</div>
+    </div>
+    <div class="indicador">
+      <div class="ind-num ind-pending">a preencher</div>
+      <div class="ind-label">total histórico de beneficiados</div>
+      <span class="ind-pending">Shirin / Franco — levantar</span>
+    </div>
+    <div class="indicador">
+      <div class="ind-num ind-pending">a preencher</div>
+      <div class="ind-label">número de projetos formalizados</div>
+      <span class="ind-pending">Shirin — confirmar</span>
+    </div>
+    <div class="indicador">
+      <div class="ind-num ind-pending">a preencher</div>
+      <div class="ind-label">empresas parceiras ativas</div>
+      <span class="ind-pending">equipe — levantar</span>
+    </div>
+  </div>
+  <div class="annotation pending" style="margin-top:4px;">Indicadores com "a preencher" não aparecem no site — ficam ocultos até validação interna</div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 2 — Cobertura geográfica confirmada</div>
+  <div class="geo-grid">
+    <div class="geo-card">
+      <div class="geo-tipo">Atuação operacional</div>
+      <div class="geo-flag">Brasil — Distrito Federal</div>
+      <div class="geo-desc">Sede principal · todos os projetos domésticos · +1.000 pessoas/mês beneficiadas</div>
+    </div>
+    <div class="geo-card">
+      <div class="geo-tipo">Atuação operacional · Internacional</div>
+      <div class="geo-flag">Nigéria — Reino de Idado-Ijesa</div>
+      <div class="geo-desc">Projeto poço d'água · parceria com família real · reconhecimento formal jan/2026</div>
+    </div>
+    <div class="geo-card">
+      <div class="geo-tipo">Presença institucional</div>
+      <div class="geo-flag">Itália — Tivoli, Sicília, Piacenza</div>
+      <div class="geo-desc">Premiação humanitária · visitas e acordos · 2024–2026</div>
+    </div>
+    <div class="geo-card">
+      <div class="geo-tipo">Presença institucional</div>
+      <div class="geo-flag">Alemanha — Giessen</div>
+      <div class="geo-desc">Apresentação do Projeto Nigéria · julho de 2024</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 3 — Ações de destaque com evidência publicável</div>
+  <div class="acoes-list">
+    <div class="acao-item">
+      <div class="acao-num">01</div>
+      <div>
+        <div class="acao-title">Mais de 1.000 pessoas beneficiadas em um único mês no DF</div>
+        <div class="acao-desc">Atendimento direto à população em situação de vulnerabilidade extrema no Distrito Federal — distribuição de alimentos, vestuário e suprimentos básicos.</div>
+        <div class="acao-meta"><span class="acao-local">Brasília · DF · 2024–2025</span><span class="acao-fonte">Lo Scudo Magazine</span><span class="annotation ready">publicável</span></div>
+      </div>
+    </div>
+    <div class="acao-item">
+      <div class="acao-num">02</div>
+      <div>
+        <div class="acao-title">Financiamento de poço d'água na Nigéria — parceria com família real</div>
+        <div class="acao-desc">Construção de poço de água potável no Reino de Idado-Ijesa — ação reconhecida formalmente pela família real nigeriana em janeiro de 2026.</div>
+        <div class="acao-meta"><span class="acao-local">Nigéria · mar/2024</span><span class="acao-fonte">Lo Scudo Magazine</span><span class="annotation ready">publicável</span></div>
+      </div>
+    </div>
+    <div class="acao-item">
+      <div class="acao-num">03</div>
+      <div>
+        <div class="acao-title">Lançamento oficial do Instituto Brasil Te Ama</div>
+        <div class="acao-desc">Jantar de lançamento com convidados especiais — marco público da fundação e do início das operações do programa.</div>
+        <div class="acao-meta"><span class="acao-local">Brasil · abr/2025</span><span class="acao-fonte">Lo Scudo Magazine</span><span class="annotation ready">publicável</span></div>
+      </div>
+    </div>
+    <div class="acao-item">
+      <div class="acao-num">04</div>
+      <div>
+        <div class="acao-title">Giornata della Donna com MPDF — empoderamento feminino no DF</div>
+        <div class="acao-desc">Evento em parceria com o Ministério Público do DF para promoção dos direitos das mulheres — mais de 1.000 serviços oferecidos.</div>
+        <div class="acao-meta"><span class="acao-local">Brasília · DF · mai/2025</span><span class="acao-fonte">Lo Scudo Magazine</span><span class="annotation ready">publicável</span></div>
+      </div>
+    </div>
+    <div class="acao-item">
+      <div class="acao-num">05</div>
+      <div>
+        <div class="acao-title">Premiação humanitária — Monsignor Casolini, Tivoli, Itália</div>
+        <div class="acao-desc">S.E. Dr. Franco Nicoletti recebe o Prêmio Humanitário das mãos de Monsignor Casolini, Reitor da Igreja de San Silvestro em Tivoli — colar com o símbolo da Cruz da Ordem.</div>
+        <div class="acao-meta"><span class="acao-local">Tivoli · Itália · mar/2026</span><span class="acao-fonte">Lo Scudo Magazine</span><span class="annotation ready">publicável</span></div>
+      </div>
+    </div>
+    <div class="acao-item">
+      <div class="acao-num">06</div>
+      <div>
+        <div class="acao-title">Quarta do Cidadão — DPDF e Instituto em parceria no DF</div>
+        <div class="acao-desc">Parceria com a Defensoria Pública do DF para ampliar os serviços da Quarta do Cidadão, incluindo assistência odontológica para população vulnerável.</div>
+        <div class="acao-meta"><span class="acao-local">Brasília · DF · mai/2025</span><span class="acao-fonte">Defensoria DF · Agência Brasília · Metrópoles</span><span class="annotation ready">publicável</span></div>
+      </div>
+    </div>
+    <div class="acao-item">
+      <div class="acao-num">07</div>
+      <div>
+        <div class="acao-title">Reconhecimento formal pela família real nigeriana</div>
+        <div class="acao-desc">O Principado de Santa Ágata, o Odo-Oko Idado Ijesa e o Reino de Idado-Ijesa agradecem formalmente à família Nicoletti pela contribuição ao desenvolvimento dos territórios.</div>
+        <div class="acao-meta"><span class="acao-local">Nigéria · jan/2026</span><span class="acao-fonte">Lo Scudo Magazine</span><span class="annotation ready">publicável</span></div>
+      </div>
+    </div>
+    <div class="acao-item">
+      <div class="acao-num">08</div>
+      <div>
+        <div class="acao-title">Ação social em Arrozal — 7 parceiros institucionais</div>
+        <div class="acao-desc">Ação no Córrego do Arrozal com DETRAN, DPDF, CAESB, GDF, Instituto Verônica Rodrigues e Secretaria de Desenvolvimento Social — cidadania e cuidado à comunidade.</div>
+        <div class="acao-meta"><span class="acao-local">Brasília · DF · mai/2025</span><span class="acao-fonte">Site Instituto</span><span class="annotation ready">publicável</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 4 — Parceiros institucionais confirmados</div>
+  <div class="parceiros-grid">
+    <div class="parceiro">
+      <div class="parceiro-tipo">Institucional público · DF</div>
+      <div class="parceiro-nome">Defensoria Pública do DF</div>
+      <div class="parceiro-proj">Quarta do Cidadão · assistência jurídica e odontológica</div>
+    </div>
+    <div class="parceiro">
+      <div class="parceiro-tipo">Institucional público · DF</div>
+      <div class="parceiro-nome">MPDF — Ministério Público do DF</div>
+      <div class="parceiro-proj">Giornata della Donna · empoderamento feminino</div>
+    </div>
+    <div class="parceiro">
+      <div class="parceiro-tipo">Internacional · Nigéria</div>
+      <div class="parceiro-nome">Família Real — Reino de Idado-Ijesa</div>
+      <div class="parceiro-proj">Poço d'água · desenvolvimento territorial</div>
+    </div>
+    <div class="parceiro">
+      <div class="parceiro-tipo">Ordem · Cooperação internacional</div>
+      <div class="parceiro-nome">Gran Priorato d'Italia dell'OSMTH</div>
+      <div class="parceiro-proj">Protocolo inter-ordens · cooperação humanitária</div>
+    </div>
+    <div class="parceiro">
+      <div class="parceiro-tipo">Empresarial</div>
+      <div class="parceiro-nome">Vimac-Capra</div>
+      <div class="parceiro-proj">Parceria agroalimentar · 2024</div>
+    </div>
+    <div class="parceiro">
+      <div class="parceiro-tipo">Comunicação</div>
+      <div class="parceiro-nome">Bucaneiros</div>
+      <div class="parceiro-proj">Parceiro de comunicação e sites</div>
+    </div>
+  </div>
+  <div class="annotation ready" style="margin-top:10px;">Todos autorizaram menção pública de nomes e logos — confirmado</div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 5 — ONGs apoiadas</div>
+  <div class="ongs-placeholder">
+    <div class="ongs-title">ONGs apoiadas pelo programa</div>
+    <p class="ongs-text">Esta seção será publicada assim que as fichas das ONGs parceiras forem formalizadas pela equipe. O Instituto Brasil Te Ama divulga a lista de ONGs apoiadas conforme sua política de transparência — somente ONGs com parceria formalizada e ativa são mencionadas publicamente.</p>
+    <div class="annotation pending" style="margin-top:12px;">Fichas de ONGs a preencher — Bloco 1 do Registro de ONGs · responsável: equipe interna</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 6 — Critérios de seleção de ONGs</div>
+  <p style="font-size:13px;color:var(--color-text-primary);line-height:1.75;margin-bottom:1.25rem;">O Instituto Brasil Te Ama direciona apoios exclusivamente a ONGs institucionais com atuação comprovada, critérios de governança definidos e compromisso com a dignidade das pessoas atendidas. Os critérios de seleção e acompanhamento estão documentados e disponíveis para consulta mediante solicitação formal.</p>
+  <div class="criterios-grid">
+    <div>
+      <div class="criterio-col-title">Critérios obrigatórios (alto peso)</div>
+      <div class="criterio-item"><div class="criterio-dot-alto"></div><div class="criterio-text">CNPJ ativo e regular, sem restrições cadastrais graves <span class="criterio-peso">· obrigatório</span></div></div>
+      <div class="criterio-item"><div class="criterio-dot-alto"></div><div class="criterio-text">Atuação comprovada em área compatível com os valores do Instituto <span class="criterio-peso">· alto</span></div></div>
+      <div class="criterio-item"><div class="criterio-dot-alto"></div><div class="criterio-text">Ausência de histórico público de irregularidade grave ou desvio de recursos <span class="criterio-peso">· obrigatório</span></div></div>
+      <div class="criterio-item"><div class="criterio-dot-alto"></div><div class="criterio-text">Abertura para prestação de contas junto ao Instituto <span class="criterio-peso">· alto</span></div></div>
+      <div class="criterio-item"><div class="criterio-dot-alto"></div><div class="criterio-text">Capacidade de receber apoio e aplicá-lo de forma verificável <span class="criterio-peso">· alto</span></div></div>
+    </div>
+    <div>
+      <div class="criterio-col-title">Critérios de priorização (médio peso)</div>
+      <div class="criterio-item"><div class="criterio-dot-med"></div><div class="criterio-text">Tempo de existência e histórico de atuação consistente <span class="criterio-peso">· médio</span></div></div>
+      <div class="criterio-item"><div class="criterio-dot-med"></div><div class="criterio-text">Presença pública verificável — site, redes sociais, relatórios <span class="criterio-peso">· médio</span></div></div>
+      <div class="criterio-item"><div class="criterio-dot-med"></div><div class="criterio-text">Cobertura geográfica relevante — nacional, regional ou estratégica <span class="criterio-peso">· médio</span></div></div>
+      <div class="criterio-item"><div class="criterio-dot-med"></div><div class="criterio-text">Alinhamento temático com as áreas prioritárias do programa <span class="criterio-peso">· médio</span></div></div>
+      <div class="criterio-item"><div class="criterio-dot-med"></div><div class="criterio-text">Diversidade geográfica em relação às ONGs já apoiadas <span class="criterio-peso">· médio</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 7 — Política de atualização e correção de dados</div>
+  <div class="politica-box">
+    <div class="politica-title">Como mantemos os dados atualizados</div>
+    <p class="politica-text">O Instituto Brasil Te Ama publica relatórios periódicos com indicadores atualizados. Em caso de erro identificado em dado já publicado, o procedimento é: identificar e registrar internamente com data e responsável, corrigir o dado no canal onde foi publicado e, se o erro puder gerar interpretação equivocada, publicar nota de correção com clareza. O Instituto não oculta erros — a transparência inclui a disposição de corrigir informações de forma aberta.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 8 — Relatório de impacto</div>
+  <div class="relatorio-box">
+    <div class="relatorio-icon">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="2" width="16" height="18" rx="2" stroke="#7B1C3E" stroke-width="1.2"/><path d="M7 7h8M7 11h8M7 15h5" stroke="#7B1C3E" stroke-width="1.2" stroke-linecap="round"/></svg>
+    </div>
+    <div style="flex:1;">
+      <div class="relatorio-title">Relatório consolidado de impacto</div>
+      <p class="relatorio-text">Documento com todos os indicadores, ações realizadas, ONGs apoiadas e evidências de impacto — publicado periodicamente pelo Instituto Brasil Te Ama.</p>
+      <div class="annotation pending" style="margin-top:6px;">Relatório em elaboração — publicação prevista após conclusão dos formulários internos de impacto</div>
+    </div>
+    <button class="relatorio-btn" style="opacity:0.5;">Em breve</button>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Bloco 9 — FAQ de transparência</div>
+  <div class="faq-item">
+    <div class="faq-q">Com que frequência os relatórios são publicados?</div>
+    <div class="faq-a">O Instituto Brasil Te Ama publica atualizações de indicadores conforme o calendário institucional — com relatório consolidado anual e atualizações eventuais quando há ação ou resultado relevante a comunicar.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Onde posso ver os valores arrecadados pelo programa?</div>
+    <div class="faq-a">Os relatórios contêm dados agregados sobre os apoios gerados e direcionados, sem individualização por empresa ou ONG — respeitando a confidencialidade dos parceiros. Empresas parceiras têm acesso ao histórico da própria parceria diretamente com o Instituto.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Como sei que as ONGs apoiadas são legítimas?</div>
+    <div class="faq-a">Cada ONG passa por análise documental e institucional antes de ser incluída no programa. Os critérios de seleção são públicos e estão disponíveis nesta página. ONGs com parceria formalizada e ativa são publicadas na lista de ONGs apoiadas.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Como posso denunciar irregularidades?</div>
+    <div class="faq-a">O Instituto disponibiliza canal de contato direto para denúncias e dúvidas sobre a aplicação dos recursos. Entre em contato pelo e-mail atendimento@institutobrasilteama.org — todas as comunicações são analisadas pela direção do Instituto.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">O programa tem certificação ou auditoria independente?</div>
+    <div class="faq-a">O Selo Brasil Te Ama é um reconhecimento institucional de parceria — não constitui certificação técnica nem auditoria independente. O acompanhamento é realizado pelo próprio Instituto com base nos critérios e mecanismos definidos nos documentos oficiais do programa.</div>
+  </div>
+  <div class="nota-juridica" style="margin-top:1rem;">
+    As informações disponibilizadas neste site têm finalidade exclusivamente institucional e informativa. O Selo Brasil Te Ama é um reconhecimento de parceria institucional e não constitui certificação técnica, auditoria independente ou garantia de benefício legal específico. Questões relativas a enquadramento fiscal, tributário ou jurídico devem ser avaliadas individualmente por profissional competente. O Instituto Brasil Te Ama não se responsabiliza por interpretações que extrapolem o conteúdo explicitamente descrito em seus documentos oficiais.
+  </div>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="section-label">Bloco 10 — CTA Para ONGs</div>
+  <div class="cta-ongs">
+    <div>
+      <h3>Sua ONG pode receber apoio da rede</h3>
+      <p>ONGs institucionais com atuação comprovada podem se cadastrar para receber recursos gerados pelo Selo Brasil Te Ama — com critérios claros e respeito à sua autonomia.</p>
+    </div>
+    <button class="cta-ongs-btn">Cadastrar minha ONG →</button>
+  </div>
+</div>

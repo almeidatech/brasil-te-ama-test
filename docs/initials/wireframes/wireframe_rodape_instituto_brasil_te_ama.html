@@ -1,0 +1,296 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bordo: #7B1C3E; --bordo-light: #f5eaee; --bordo-dark: #5a1230;
+  --gray-text: #3d3b38; --gray-mid: #6b6966; --gray-light: #f5f4f1;
+}
+body { font-family: var(--font-sans); background: transparent; }
+.annotation { font-size:10px; color:#185FA5; background:#E6F1FB; border:0.5px solid #85B7EB; border-radius:3px; padding:2px 7px; display:inline-block; }
+.pending { color:#854F0B; background:#FAEEDA; border-color:#EF9F27; }
+.ready { color:#3B6D11; background:#EAF3DE; border-color:#97C459; }
+.obrigatorio { color:#A32D2D; background:#FCEBEB; border-color:#E24B4A; }
+
+/* Wrapper de análise */
+.analise { padding:1.5rem; background:var(--color-background-secondary); border-bottom:0.5px solid var(--color-border-tertiary); }
+.analise-title { font-size:12px; font-weight:500; color:var(--color-text-primary); margin-bottom:10px; }
+.publicos-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.publico-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-md); padding:10px; }
+.publico-nome { font-size:11px; font-weight:500; color:var(--color-text-primary); margin-bottom:4px; }
+.publico-item { font-size:10px; color:var(--color-text-secondary); margin-bottom:2px; display:flex; gap:4px; align-items:flex-start; }
+.publico-dot { width:4px; height:4px; border-radius:50%; background:var(--bordo); flex-shrink:0; margin-top:3px; }
+
+/* Faixa CTA pré-rodapé */
+.pre-footer { background:var(--bordo); padding:1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:1rem; border-bottom:0.5px solid rgba(255,255,255,0.1); }
+.pre-footer-col { padding:1rem; border-radius:var(--border-radius-md); background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.12); }
+.pre-footer-tag { font-size:9px; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.5); margin-bottom:6px; font-weight:500; }
+.pre-footer-title { font-size:14px; font-weight:500; color:white; margin-bottom:6px; }
+.pre-footer-text { font-size:11px; color:rgba(255,255,255,0.65); line-height:1.5; margin-bottom:10px; }
+.pre-footer-btn-primary { background:white; color:var(--bordo); font-size:11px; font-weight:500; padding:7px 14px; border-radius:var(--border-radius-md); border:none; display:inline-block; }
+.pre-footer-btn-ghost { background:transparent; color:rgba(255,255,255,0.7); font-size:11px; padding:7px 14px; border:0.5px solid rgba(255,255,255,0.3); border-radius:var(--border-radius-md); display:inline-block; margin-left:6px; }
+
+/* Rodapé principal */
+.footer { background:#2A2826; padding:2.5rem 1.5rem 0; }
+.footer-main { display:grid; grid-template-columns:1.8fr 1fr 1fr 1fr; gap:2rem; padding-bottom:2rem; border-bottom:0.5px solid rgba(255,255,255,0.08); }
+
+/* Coluna identidade */
+.footer-brand { }
+.footer-logo-row { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.footer-logo-box { width:36px; height:36px; border-radius:4px; background:var(--bordo); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; color:white; }
+.footer-brand-name { font-size:13px; font-weight:500; color:white; }
+.footer-brand-sub { font-size:10px; color:rgba(255,255,255,0.4); }
+.footer-desc { font-size:11px; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:14px; }
+.footer-contact-item { display:flex; align-items:flex-start; gap:8px; margin-bottom:6px; }
+.footer-contact-label { font-size:9px; text-transform:uppercase; letter-spacing:0.07em; color:rgba(255,255,255,0.35); font-weight:500; min-width:44px; margin-top:1px; }
+.footer-contact-value { font-size:11px; color:rgba(255,255,255,0.6); line-height:1.4; }
+.footer-cavaleiros { margin-top:14px; padding-top:12px; border-top:0.5px solid rgba(255,255,255,0.08); }
+.footer-cavaleiros-label { font-size:9px; text-transform:uppercase; letter-spacing:0.07em; color:rgba(255,255,255,0.35); margin-bottom:4px; }
+.footer-cavaleiros-value { font-size:11px; color:rgba(255,255,255,0.55); line-height:1.4; }
+
+/* Colunas de navegação */
+.footer-col { }
+.footer-col-header { display:flex; align-items:center; gap:6px; margin-bottom:12px; padding-bottom:8px; border-bottom:0.5px solid rgba(255,255,255,0.08); }
+.footer-col-icon { width:20px; height:20px; border-radius:4px; display:flex; align-items:center; justify-content:center; }
+.footer-col-title { font-size:10px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.4); }
+.footer-col-pub { font-size:9px; padding:1px 6px; border-radius:3px; margin-left:4px; }
+.pub-empresa { background:rgba(123,28,62,0.4); color:rgba(255,255,255,0.6); }
+.pub-ong { background:rgba(99,153,34,0.3); color:rgba(255,255,255,0.6); }
+.pub-ambos { background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.5); }
+.footer-link { display:flex; align-items:center; gap:6px; margin-bottom:7px; font-size:11px; color:rgba(255,255,255,0.55); cursor:pointer; }
+.footer-link:hover { color:rgba(255,255,255,0.85); }
+.footer-link-dot { width:3px; height:3px; border-radius:50%; background:rgba(255,255,255,0.2); flex-shrink:0; }
+.footer-link-tag { font-size:8px; padding:1px 5px; border-radius:2px; background:rgba(123,28,62,0.35); color:rgba(255,255,255,0.5); margin-left:2px; }
+
+/* Nota jurídica */
+.footer-juridica { padding:1rem 0; border-bottom:0.5px solid rgba(255,255,255,0.08); }
+.footer-juridica-text { font-size:10px; color:rgba(255,255,255,0.3); line-height:1.65; }
+
+/* Documentos legais */
+.footer-docs { padding:1rem 0; border-bottom:0.5px solid rgba(255,255,255,0.08); }
+.footer-docs-title { font-size:9px; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.3); margin-bottom:8px; font-weight:500; }
+.footer-docs-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; }
+.footer-doc-card { background:rgba(255,255,255,0.04); border:0.5px solid rgba(255,255,255,0.08); border-radius:var(--border-radius-md); padding:8px 10px; }
+.footer-doc-name { font-size:10px; font-weight:500; color:rgba(255,255,255,0.5); margin-bottom:2px; }
+.footer-doc-status { font-size:9px; color:rgba(255,255,255,0.3); }
+
+/* Rodapé inferior */
+.footer-bottom { padding:1rem 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.footer-copy { font-size:10px; color:rgba(255,255,255,0.25); }
+.footer-bottom-links { display:flex; gap:14px; }
+.footer-bottom-link { font-size:10px; color:rgba(255,255,255,0.3); }
+.footer-cnpj-strip { width:100%; padding:8px 0; border-top:0.5px solid rgba(255,255,255,0.05); display:flex; align-items:center; gap:6px; }
+.footer-cnpj-text { font-size:9px; color:rgba(255,255,255,0.2); }
+
+/* Cookies */
+.cookies-banner { background:#1E1C1A; border-top:1px solid rgba(255,255,255,0.06); padding:10px 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.cookies-text { font-size:10px; color:rgba(255,255,255,0.4); line-height:1.5; flex:1; }
+.cookies-btns { display:flex; gap:6px; flex-shrink:0; }
+.cookies-btn-accept { background:var(--bordo); color:white; font-size:10px; padding:5px 12px; border-radius:3px; border:none; }
+.cookies-btn-config { background:transparent; color:rgba(255,255,255,0.4); font-size:10px; padding:5px 12px; border:0.5px solid rgba(255,255,255,0.15); border-radius:3px; }
+</style>
+
+<h2 class="sr-only">Wireframe do rodapé — Instituto Brasil Te Ama — estrutura para dois públicos com documentos legais obrigatórios</h2>
+
+<!-- ANÁLISE DE PÚBLICOS -->
+<div class="analise">
+  <div class="analise-title">Lógica de navegação por público — base do design do rodapé</div>
+  <div class="publicos-grid">
+    <div class="publico-card">
+      <div class="publico-nome" style="color:var(--bordo);">🏢 Empresário / Parceiro</div>
+      <div class="publico-item"><div class="publico-dot"></div>Quer confirmar credibilidade do Instituto</div>
+      <div class="publico-item"><div class="publico-dot"></div>Busca o formulário de parceria rapidamente</div>
+      <div class="publico-item"><div class="publico-dot"></div>Verifica CNPJ, contato e documentos legais</div>
+      <div class="publico-item"><div class="publico-dot"></div>Quer saber quem aprova a adesão</div>
+    </div>
+    <div class="publico-card">
+      <div class="publico-nome" style="color:#639922;">🌿 ONG / Organização</div>
+      <div class="publico-item"><div class="publico-dot"></div>Quer acessar o formulário de cadastro</div>
+      <div class="publico-item"><div class="publico-dot"></div>Busca os critérios de elegibilidade</div>
+      <div class="publico-item"><div class="publico-dot"></div>Quer confirmar a legitimidade do Instituto</div>
+      <div class="publico-item"><div class="publico-dot"></div>Procura o prazo de retorno</div>
+    </div>
+    <div class="publico-card">
+      <div class="publico-nome" style="color:#534AB7;">📰 Imprensa / Institucional</div>
+      <div class="publico-item"><div class="publico-dot"></div>Busca dados de contato direto</div>
+      <div class="publico-item"><div class="publico-dot"></div>Verifica CNPJ e razão social</div>
+      <div class="publico-item"><div class="publico-dot"></div>Acessa informações de liderança</div>
+      <div class="publico-item"><div class="publico-dot"></div>Quer links de imprensa e transparência</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAIXA PRÉ-RODAPÉ: CTA DUPLO POR PÚBLICO -->
+<div class="pre-footer">
+  <div class="pre-footer-col">
+    <div class="pre-footer-tag">Para empresas</div>
+    <div class="pre-footer-title">Sua empresa na rede do bem</div>
+    <div class="pre-footer-text">Conheça o Programa Selo Brasil Te Ama e solicite uma conversa com nossa equipe.</div>
+    <button class="pre-footer-btn-primary">Quero ser parceiro</button>
+    <button class="pre-footer-btn-ghost">Ver o programa</button>
+  </div>
+  <div class="pre-footer-col">
+    <div class="pre-footer-tag">Para ONGs</div>
+    <div class="pre-footer-title">Sua ONG pode receber apoio</div>
+    <div class="pre-footer-text">Cadastre sua organização e inicie o processo de avaliação institucional.</div>
+    <button class="pre-footer-btn-primary" style="background:rgba(255,255,255,0.9);">Cadastrar minha ONG</button>
+    <button class="pre-footer-btn-ghost">Ver critérios</button>
+  </div>
+</div>
+
+<!-- RODAPÉ PRINCIPAL: 4 COLUNAS -->
+<div class="footer">
+  <div class="footer-main">
+
+    <!-- COLUNA 1: IDENTIDADE -->
+    <div class="footer-brand">
+      <div class="footer-logo-row">
+        <div class="footer-logo-box">IBtA</div>
+        <div>
+          <div class="footer-brand-name">Instituto Brasil Te Ama</div>
+          <div class="footer-brand-sub">Organização humanitária sem fins lucrativos</div>
+        </div>
+      </div>
+      <div class="footer-desc">Uma rede do bem que conecta empresas e ONGs. Com transparência e respaldo internacional dos Cavaleiros de Malta.</div>
+      <div class="footer-contact-item">
+        <div class="footer-contact-label">E-mail</div>
+        <div class="footer-contact-value">atendimento@institutobrasilteama.org</div>
+      </div>
+      <div class="footer-contact-item">
+        <div class="footer-contact-label">Tel.</div>
+        <div class="footer-contact-value">(61) 3321-2535 · (61) 98498-1100</div>
+      </div>
+      <div class="footer-contact-item">
+        <div class="footer-contact-label">Local</div>
+        <div class="footer-contact-value">Brasília · DF · Brasil <span class="annotation pending" style="font-size:8px;margin-left:2px;">endereço a confirmar</span></div>
+      </div>
+      <div class="footer-contact-item">
+        <div class="footer-contact-label">CNPJ</div>
+        <div class="footer-contact-value">49.458.362/0001-10</div>
+      </div>
+      <div class="footer-cavaleiros">
+        <div class="footer-cavaleiros-label">Respaldo estrutural</div>
+        <div class="footer-cavaleiros-value">OSJ Knights of Malta — Cavaleiros de Malta</div>
+      </div>
+    </div>
+
+    <!-- COLUNA 2: INSTITUCIONAL (ambos públicos) -->
+    <div class="footer-col">
+      <div class="footer-col-header">
+        <div class="footer-col-title">Institucional</div>
+        <span class="footer-col-pub pub-ambos">todos</span>
+      </div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Home</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Sobre o Instituto</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Liderança</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Projetos</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Notícias</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Transparência</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Contato</div>
+    </div>
+
+    <!-- COLUNA 3: PARA EMPRESAS -->
+    <div class="footer-col">
+      <div class="footer-col-header">
+        <div class="footer-col-title">Para empresas</div>
+        <span class="footer-col-pub pub-empresa">empresas</span>
+      </div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Programa Selo Brasil Te Ama</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Como funciona <span class="footer-link-tag">Selo</span></div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Benefícios institucionais</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Quem pode aderir</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>FAQ para empresas</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Solicitar parceria</div>
+      <div style="margin-top:12px;padding-top:10px;border-top:0.5px solid rgba(255,255,255,0.08);">
+        <div class="footer-cavaleiros-label" style="margin-bottom:4px;">Aprovação de adesões</div>
+        <div class="footer-cavaleiros-value">Shirin Vafaein — Presidente</div>
+      </div>
+    </div>
+
+    <!-- COLUNA 4: PARA ONGs -->
+    <div class="footer-col">
+      <div class="footer-col-header">
+        <div class="footer-col-title">Para ONGs</div>
+        <span class="footer-col-pub pub-ong">ONGs</span>
+      </div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Página Para ONGs</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Critérios de elegibilidade</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Como funciona o processo</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>Formulário de cadastro</div>
+      <div class="footer-link"><div class="footer-link-dot"></div>FAQ para ONGs</div>
+      <div style="margin-top:12px;padding-top:10px;border-top:0.5px solid rgba(255,255,255,0.08);">
+        <div class="footer-cavaleiros-label" style="margin-bottom:4px;">Prazo de retorno</div>
+        <div class="footer-cavaleiros-value">Até 15 dias úteis após o cadastro</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NOTA JURÍDICA -->
+  <div class="footer-juridica">
+    <div class="footer-juridica-text">O Instituto Brasil Te Ama é uma organização humanitária sem fins lucrativos. O Selo Brasil Te Ama é um reconhecimento institucional de parceria e não constitui certificação técnica, auditoria independente ou garantia de benefício fiscal específico. Questões tributárias ou jurídicas devem ser avaliadas individualmente por profissional competente. O Instituto não presta consultoria fiscal e não se responsabiliza por interpretações que extrapolem o conteúdo explicitamente descrito em seus documentos oficiais. <span class="annotation ready" style="font-size:8px;">aprovada · Queiroz Advogados</span></div>
+  </div>
+
+  <!-- DOCUMENTOS LEGAIS -->
+  <div class="footer-docs">
+    <div class="footer-docs-title">Documentos institucionais e legais</div>
+    <div class="footer-docs-grid">
+      <div class="footer-doc-card">
+        <div class="footer-doc-name">Política de Privacidade</div>
+        <div class="footer-doc-status">LGPD · <span class="annotation obrigatorio" style="font-size:8px;">criar antes do lançamento</span></div>
+      </div>
+      <div class="footer-doc-card">
+        <div class="footer-doc-name">Termos de Uso</div>
+        <div class="footer-doc-status"><span class="annotation obrigatorio" style="font-size:8px;">criar antes do lançamento</span></div>
+      </div>
+      <div class="footer-doc-card">
+        <div class="footer-doc-name">Política de Cookies</div>
+        <div class="footer-doc-status">LGPD · <span class="annotation obrigatorio" style="font-size:8px;">plugin WordPress</span></div>
+      </div>
+      <div class="footer-doc-card">
+        <div class="footer-doc-name">Canal de Ética</div>
+        <div class="footer-doc-status"><span class="annotation pending" style="font-size:8px;">e-mail ou formulário</span></div>
+      </div>
+      <div class="footer-doc-card">
+        <div class="footer-doc-name">Regulamento do Selo</div>
+        <div class="footer-doc-status"><span class="annotation ready" style="font-size:8px;">documento pronto · publicar em PDF</span></div>
+      </div>
+      <div class="footer-doc-card">
+        <div class="footer-doc-name">Critérios de Seleção de ONGs</div>
+        <div class="footer-doc-status"><span class="annotation ready" style="font-size:8px;">publicado na página Transparência</span></div>
+      </div>
+      <div class="footer-doc-card">
+        <div class="footer-doc-name">Relatório de Impacto</div>
+        <div class="footer-doc-status"><span class="annotation pending" style="font-size:8px;">em elaboração — PDF futuro</span></div>
+      </div>
+      <div class="footer-doc-card">
+        <div class="footer-doc-name">Política de Transparência</div>
+        <div class="footer-doc-status"><span class="annotation ready" style="font-size:8px;">publicada na página Transparência</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINHA INFERIOR -->
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2022–2026 Instituto Brasil Te Ama · Todos os direitos reservados</div>
+    <div class="footer-bottom-links">
+      <span class="footer-bottom-link">Política de Privacidade</span>
+      <span class="footer-bottom-link">Termos de Uso</span>
+      <span class="footer-bottom-link">Política de Cookies</span>
+      <span class="footer-bottom-link">Canal de Ética</span>
+    </div>
+  </div>
+
+  <div class="footer-cnpj-strip">
+    <span class="footer-cnpj-text">Instituto Brasil Te Ama · CNPJ 49.458.362/0001-10 · Brasília, DF, Brasil · Organização humanitária sem fins lucrativos · Razão Social: Instituto Brasil Te Ama</span>
+  </div>
+
+</div>
+
+<!-- BANNER DE COOKIES (LGPD) -->
+<div class="cookies-banner">
+  <div class="cookies-text">Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <u>Política de Cookies</u> e <u>Política de Privacidade</u>, conforme a Lei 13.709/2018 (LGPD).</div>
+  <div class="cookies-btns">
+    <button class="cookies-btn-config">Configurar</button>
+    <button class="cookies-btn-accept">Aceitar</button>
+  </div>
+</div>
