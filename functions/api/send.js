@@ -101,7 +101,7 @@ export async function onRequestPost({ request, env }) {
 
   const body = {
     from: {
-      address: 'noreply@institutobrasilteama.org',
+      address: 'noreply@alcgestao.com.br',
       name: 'Site Instituto Brasil Te Ama',
     },
     to: [
