@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 import './Selo.css';
@@ -5,7 +6,63 @@ import './Selo.css';
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
 const ctaLinkStyle = { display: 'inline-block', textDecoration: 'none' };
 
+const SELO_FIELDS = [
+  { key: 'nome_empresa', label: 'Nome da empresa', type: 'text', required: true },
+  { key: 'cnpj', label: 'CNPJ', type: 'text', required: true },
+  { key: 'segmento', label: 'Segmento de atuação', type: 'text', required: true },
+  { key: 'produto', label: 'Produto ou serviço onde aplicaria o selo', type: 'text', required: true },
+  { key: 'nome_responsavel', label: 'Nome do responsável', type: 'text', required: true },
+  { key: 'cargo', label: 'Cargo', type: 'text', required: true },
+  { key: 'email', label: 'E-mail corporativo', type: 'email', required: true },
+  { key: 'telefone', label: 'Telefone / WhatsApp', type: 'tel', required: true },
+  {
+    key: 'mensagem',
+    label: 'Mensagem (opcional) — conte brevemente sobre sua empresa e seu interesse no programa',
+    type: 'textarea',
+    required: false,
+    isFull: true,
+  },
+];
+
+const emptySelo = Object.fromEntries(SELO_FIELDS.map((f) => [f.key, '']));
+
 export default function Selo() {
+  const [values, setValues] = useState(emptySelo);
+  const [submitting, setSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState(null);
+
+  const handleChange = (key) => (e) => {
+    setValues((prev) => ({ ...prev, [key]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setFeedback(null);
+    const fields = {};
+    for (const f of SELO_FIELDS) {
+      fields[f.label] = values[f.key];
+    }
+    try {
+      const res = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formType: 'selo', fields }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        setFeedback({ type: 'success', message: 'Mensagem enviada. Nossa equipe retorna em breve.' });
+        setValues(emptySelo);
+      } else {
+        setFeedback({ type: 'error', message: 'Não foi possível enviar. Tente novamente em instantes ou escreva direto para atendimento@institutobrasilteama.org.' });
+      }
+    } catch {
+      setFeedback({ type: 'error', message: 'Não foi possível enviar. Tente novamente em instantes ou escreva direto para atendimento@institutobrasilteama.org.' });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="page-selo">
       <h2 className="sr-only">Wireframe da página Selo Brasil Te Ama — 7 blocos de conversão B2B com textos aprovados</h2>
@@ -267,19 +324,36 @@ export default function Selo() {
       <div className="form-section" id="form">
         <div className="form-title">Solicite uma conversa</div>
         <p className="form-sub">O primeiro contato não é uma triagem fria — é uma conversa real para entender se faz sentido para os dois lados. Preencha o formulário e nossa equipe retornará em até 5 dias úteis.</p>
-        <div className="form-grid">
-          <div className="form-field">Nome da empresa</div>
-          <div className="form-field">CNPJ</div>
-          <div className="form-field">Segmento de atuação</div>
-          <div className="form-field">Produto ou serviço onde aplicaria o selo</div>
-          <div className="form-field">Nome do responsável</div>
-          <div className="form-field">Cargo</div>
-          <div className="form-field">E-mail corporativo</div>
-          <div className="form-field">Telefone / WhatsApp</div>
-          <div className="form-field form-field-full">Mensagem (opcional) — conte brevemente sobre sua empresa e seu interesse no programa</div>
-          <div className="form-submit">Enviar solicitação →</div>
+        <form className="form-grid" onSubmit={handleSubmit} noValidate>
+          {SELO_FIELDS.map((f) => (
+            <label key={f.key} className={`form-field${f.isFull ? ' form-field-full' : ''}`}>
+              <span className="form-field-label">{f.label}</span>
+              {f.type === 'textarea' ? (
+                <textarea
+                  name={f.key}
+                  value={values[f.key]}
+                  onChange={handleChange(f.key)}
+                  required={f.required}
+                />
+              ) : (
+                <input
+                  type={f.type}
+                  name={f.key}
+                  value={values[f.key]}
+                  onChange={handleChange(f.key)}
+                  required={f.required}
+                />
+              )}
+            </label>
+          ))}
+          {feedback && (
+            <div className={`form-feedback form-feedback-${feedback.type}`}>{feedback.message}</div>
+          )}
+          <button type="submit" className="form-submit" disabled={submitting}>
+            {submitting ? 'Enviando…' : 'Enviar solicitação →'}
+          </button>
           <div className="form-note">Ao enviar este formulário, você concorda que o Instituto Brasil Te Ama entre em contato para apresentar o programa. Nenhum compromisso é assumido antes da assinatura do Termo de Adesão. · atendimento@institutobrasilteama.org · (61) 3321-2535</div>
-        </div>
+        </form>
         <div className="annotation pending" style={{ marginTop: '1rem' }}>Formulário: configurar envio para atendimento@institutobrasilteama.org via Elementor Forms ou plugin de e-mail</div>
       </div>
       <Footer />

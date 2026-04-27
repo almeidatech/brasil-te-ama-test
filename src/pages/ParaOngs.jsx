@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 import './ParaOngs.css';
@@ -5,7 +6,73 @@ import './ParaOngs.css';
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
 const ctaLinkStyle = { display: 'inline-block', textDecoration: 'none' };
 
+const PARAONGS_FIELDS = [
+  { key: 'nome_ong', label: 'Nome da ONG', type: 'text', required: true },
+  { key: 'cnpj', label: 'CNPJ', type: 'text', required: true },
+  { key: 'area_atuacao', label: 'Área de atuação principal', type: 'text', required: true },
+  { key: 'cidade', label: 'Estado e cidade de atuação', type: 'text', required: true },
+  { key: 'ano_fundacao', label: 'Ano de fundação', type: 'text', required: true },
+  { key: 'beneficiados', label: 'Número aproximado de beneficiados', type: 'text', required: true },
+  { key: 'nome_responsavel', label: 'Nome do responsável pelo cadastro', type: 'text', required: true },
+  { key: 'cargo', label: 'Cargo', type: 'text', required: true },
+  { key: 'email', label: 'E-mail institucional', type: 'email', required: true },
+  { key: 'telefone', label: 'Telefone / WhatsApp', type: 'tel', required: true },
+  { key: 'site', label: 'Site ou rede social da ONG (se houver)', type: 'url', required: false },
+  {
+    key: 'tipo_apoio',
+    label: 'Tipo de apoio de interesse (financeiro · suprimentos · ambos · a definir)',
+    type: 'select',
+    required: true,
+    options: ['Financeiro', 'Suprimentos', 'Ambos', 'A definir'],
+  },
+  {
+    key: 'descricao',
+    label: 'Descrição do trabalho — descreva brevemente o que a ONG faz, quem atende e como opera',
+    type: 'textarea',
+    required: true,
+    isFull: true,
+  },
+];
+
+const emptyParaOngs = Object.fromEntries(PARAONGS_FIELDS.map((f) => [f.key, '']));
+
 export default function ParaOngs() {
+  const [values, setValues] = useState(emptyParaOngs);
+  const [submitting, setSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState(null);
+
+  const handleChange = (key) => (e) => {
+    setValues((prev) => ({ ...prev, [key]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setFeedback(null);
+    const fields = {};
+    for (const f of PARAONGS_FIELDS) {
+      fields[f.label] = values[f.key];
+    }
+    try {
+      const res = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formType: 'paraongs', fields }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        setFeedback({ type: 'success', message: 'Mensagem enviada. Nossa equipe retorna em breve.' });
+        setValues(emptyParaOngs);
+      } else {
+        setFeedback({ type: 'error', message: 'Não foi possível enviar. Tente novamente em instantes ou escreva direto para atendimento@institutobrasilteama.org.' });
+      }
+    } catch {
+      setFeedback({ type: 'error', message: 'Não foi possível enviar. Tente novamente em instantes ou escreva direto para atendimento@institutobrasilteama.org.' });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="page-para-ongs">
       <h2 className="sr-only">Wireframe da página Para ONGs — Instituto Brasil Te Ama — critérios, formulário de cadastro e FAQ</h2>
@@ -149,23 +216,50 @@ export default function ParaOngs() {
       <div className="form-section" id="form">
         <div className="form-title">Formulário de cadastro de ONG</div>
         <div className="form-sub">Preencha os dados abaixo. O cadastro não garante apoio imediato — é o início de uma avaliação institucional. Nossa equipe retorna em até 15 dias úteis.</div>
-        <div className="form-grid">
-          <div className="form-field">Nome da ONG</div>
-          <div className="form-field">CNPJ</div>
-          <div className="form-field">Área de atuação principal</div>
-          <div className="form-field">Estado e cidade de atuação</div>
-          <div className="form-field">Ano de fundação</div>
-          <div className="form-field">Número aproximado de beneficiados</div>
-          <div className="form-field">Nome do responsável pelo cadastro</div>
-          <div className="form-field">Cargo</div>
-          <div className="form-field">E-mail institucional</div>
-          <div className="form-field">Telefone / WhatsApp</div>
-          <div className="form-field">Site ou rede social da ONG (se houver)</div>
-          <div className="form-field">Tipo de apoio de interesse (financeiro · suprimentos · ambos · a definir)</div>
-          <div className="form-field form-field-full" style={{ minHeight: '80px' }}>Descrição do trabalho — descreva brevemente o que a ONG faz, quem atende e como opera</div>
-          <div className="form-submit">Enviar cadastro →</div>
+        <form className="form-grid" onSubmit={handleSubmit} noValidate>
+          {PARAONGS_FIELDS.map((f) => (
+            <label key={f.key} className={`form-field${f.isFull ? ' form-field-full' : ''}`}>
+              <span className="form-field-label">{f.label}</span>
+              {f.type === 'textarea' ? (
+                <textarea
+                  name={f.key}
+                  value={values[f.key]}
+                  onChange={handleChange(f.key)}
+                  required={f.required}
+                />
+              ) : f.type === 'select' ? (
+                <select
+                  name={f.key}
+                  value={values[f.key]}
+                  onChange={handleChange(f.key)}
+                  required={f.required}
+                >
+                  <option value="">Selecione…</option>
+                  {f.options.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type={f.type}
+                  name={f.key}
+                  value={values[f.key]}
+                  onChange={handleChange(f.key)}
+                  required={f.required}
+                />
+              )}
+            </label>
+          ))}
+          {feedback && (
+            <div className={`form-feedback form-feedback-${feedback.type}`}>{feedback.message}</div>
+          )}
+          <button type="submit" className="form-submit" disabled={submitting}>
+            {submitting ? 'Enviando…' : 'Enviar cadastro →'}
+          </button>
           <div className="form-note">O envio deste formulário não garante aprovação ou apoio imediato. O Instituto Brasil Te Ama avaliará o cadastro com base nos critérios públicos de elegibilidade e retornará em até 15 dias úteis. · atendimento@institutobrasilteama.org · (61) 3321-2535</div>
-        </div>
+        </form>
       </div>
 
       <div className="section">
