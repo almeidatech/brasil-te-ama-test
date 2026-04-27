@@ -81,3 +81,6 @@
 .page-sobre .cta-lideranca-text h3 { font-size:18px; font-weight:500; color:var(--bordo-dark); margin-bottom:6px; }
 .page-sobre .cta-lideranca-text p { font-size:13px; color:#5a1230; line-height:1.6; max-width:400px; }
 .page-sobre .cta-lideranca-btn { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:10px 20px; border-radius:var(--border-radius-md); border:none; white-space:nowrap; flex-shrink:0; }
+
+.page-sobre .cavaleiros-logo { padding: 0; overflow: hidden; }
+.page-sobre .cavaleiros-logo img { width: 100%; height: auto; display: block; }

@@ -13,7 +13,7 @@ export default function Sobre() {
       <nav className="nav">
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <div className="nav-logo">
-            <div className="logo-box">IBtA</div>
+            <img src="/images/logo.png" alt="Instituto Brasil Te Ama" className="logo-img" />
             <div className="logo-name">Instituto Brasil Te Ama</div>
           </div>
         </Link>
@@ -46,8 +46,7 @@ export default function Sobre() {
             <div className="cavaleiros-title">OSJ Knights of Malta — Cavaleiros de Malta</div>
             <p className="cavaleiros-text">O Instituto Brasil Te Ama conta com o apoio estrutural da Ordem Soberana e Militar de São João de Jerusalém, Rodes e Malta — OSJ Knights of Malta. Essa parceria institucional confere legitimidade internacional, governança sólida e compromisso de longo prazo com as ações humanitárias no Brasil e no exterior.</p>
             <div className="cavaleiros-logo">
-              Logo OSJ Knights of Malta<br/>
-              <span className="annotation pending" style={{ fontSize: '9px' }}>inserir logo oficial</span>
+              <img src="/images/editorial-loscudo.jpg" alt="OSJ Knights of Malta — Cavaleiros de Malta" />
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function Lideranca() {
       <nav className="nav">
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <div className="nav-logo">
-            <div className="logo-box">IBtA</div>
+            <img src="/images/logo.png" alt="Instituto Brasil Te Ama" className="logo-img" />
             <div className="logo-name">Instituto Brasil Te Ama</div>
           </div>
         </Link>
@@ -35,9 +35,7 @@ export default function Lideranca() {
         <div className="section-label">S.E. Dr. Franco Nicoletti — Fundador</div>
         <div className="lider-header">
           <div className="lider-foto">
-            <div className="lider-foto-initials">FN</div>
-            <span>Foto com vestimenta da Ordem</span>
-            <span className="annotation pending">pendente — alta res.</span>
+            <img src="/images/nicoletti-vertical.jpg" alt="S.E. Dr. Franco Nicoletti — Fundador" />
           </div>
           <div>
             <div className="lider-nome">S.E. Dr. Franco Nicoletti</div>

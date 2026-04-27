@@ -41,3 +41,5 @@ button { cursor: pointer; font-family: inherit; }
 }
 .annotation.pending { color: #854F0B; background: #FAEEDA; border-color: #EF9F27; }
 .annotation.ready { color: #3B6D11; background: #EAF3DE; border-color: #97C459; }
+
+.logo-img { width: 36px; height: 36px; object-fit: contain; display: block; }

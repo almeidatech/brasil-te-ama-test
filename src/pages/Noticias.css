@@ -69,3 +69,10 @@
 .page-noticias .cta-newsletter-form { display:flex; gap:8px; align-items:center; flex-shrink:0; }
 .page-noticias .cta-newsletter-input { background:white; border:0.5px solid var(--color-border-secondary); border-radius:var(--border-radius-md); padding:8px 14px; font-size:12px; color:var(--gray-mid); width:200px; }
 .page-noticias .cta-newsletter-btn { background:var(--bordo); color:white; font-size:12px; font-weight:500; padding:8px 16px; border-radius:var(--border-radius-md); border:none; white-space:nowrap; }
+
+.page-noticias .card-destaque-img,
+.page-noticias .card-img { padding: 0; }
+.page-noticias .card-destaque-img img,
+.page-noticias .card-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}

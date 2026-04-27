@@ -13,7 +13,7 @@ export default function Contato() {
       <nav className="nav">
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <div className="nav-logo">
-            <div className="logo-box">IBtA</div>
+            <img src="/images/logo.png" alt="Instituto Brasil Te Ama" className="logo-img" />
             <div className="logo-name">Instituto Brasil Te Ama</div>
           </div>
         </Link>

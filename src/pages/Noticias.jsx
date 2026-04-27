@@ -13,7 +13,7 @@ export default function Noticias() {
       <nav className="nav">
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <div className="nav-logo">
-            <div className="logo-box">IBtA</div>
+            <img src="/images/logo.png" alt="Instituto Brasil Te Ama" className="logo-img" />
             <div className="logo-name">Instituto Brasil Te Ama</div>
           </div>
         </Link>
@@ -46,8 +46,7 @@ export default function Noticias() {
         <div className="section-label">Destaque — notícia principal</div>
         <div className="card-destaque">
           <div className="card-destaque-img">
-            foto da ação<br/>Rodoviária · DF
-            <span className="annotation ready" style={{ fontSize: '9px', marginTop: '4px' }}>foto no site atual</span>
+            <img src="/images/cidadania-01.jpg" alt="Dia de Cidadania e Solidariedade na Rodoviária do Plano Piloto" />
           </div>
           <div className="card-destaque-body">
             <span className="card-cat cat-acoes">Ações em campo</span>
@@ -68,7 +67,7 @@ export default function Noticias() {
         <div className="cards-grid">
 
           <div className="card">
-            <div className="card-img">foto do evento<br/><span className="annotation ready" style={{ fontSize: '9px' }}>foto no site atual</span></div>
+            <div className="card-img"><img src="/images/lancamento-01.jpg" alt="Lançamento do Instituto Brasil Te Ama" /></div>
             <div className="card-body">
               <span className="card-cat cat-eventos">Eventos</span>
               <div className="card-title">Lançamento do Instituto Brasil Te Ama reúne convidados especiais</div>
@@ -112,7 +111,7 @@ export default function Noticias() {
           </div>
 
           <div className="card">
-            <div className="card-img">foto do atleta<br/><span className="annotation ready" style={{ fontSize: '9px' }}>foto no site atual</span></div>
+            <div className="card-img"><img src="/images/edilson-01.jpg" alt="Encontro Inspirador com o Atleta Edilson" /></div>
             <div className="card-body">
               <span className="card-cat cat-eventos">Eventos</span>
               <div className="card-title">Encontro Inspirador com o Atleta Edilson</div>
@@ -123,7 +122,7 @@ export default function Noticias() {
           </div>
 
           <div className="card">
-            <div className="card-img">foto do evento<br/><span className="annotation pending" style={{ fontSize: '9px' }}>foto a confirmar</span></div>
+            <div className="card-img"><img src="/images/wpfg-01.jpg" alt="21ª Edição do World Police & Fire Games" /></div>
             <div className="card-body">
               <span className="card-cat cat-eventos">Eventos</span>
               <div className="card-title">21ª Edição do World Police & Fire Games</div>
@@ -134,7 +133,7 @@ export default function Noticias() {
           </div>
 
           <div className="card">
-            <div className="card-img">foto<br/><span className="annotation pending" style={{ fontSize: '9px' }}>pendente</span></div>
+            <div className="card-img"><img src="/images/maes-01.jpg" alt="Homenagem ao Dia das Mães — Instituto Brasil Te Ama" /></div>
             <div className="card-body">
               <span className="card-cat cat-acoes">Ações em campo</span>
               <div className="card-title">Homenagem ao Dia das Mães — Instituto Brasil Te Ama</div>
@@ -145,7 +144,7 @@ export default function Noticias() {
           </div>
 
           <div className="card">
-            <div className="card-img">foto<br/><span className="annotation pending" style={{ fontSize: '9px' }}>pendente</span></div>
+            <div className="card-img"><img src="/images/edilson-02.jpg" alt="Atleta amador de 75 anos em competições de corrida em Goiás" /></div>
             <div className="card-body">
               <span className="card-cat cat-acoes">Ações em campo</span>
               <div className="card-title">Atleta amador de 75 anos brilha em competições de corrida em Goiás</div>

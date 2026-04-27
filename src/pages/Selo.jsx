@@ -13,7 +13,7 @@ export default function Selo() {
       <nav className="nav">
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <div className="nav-logo">
-            <div className="logo-box">IBtA</div>
+            <img src="/images/logo.png" alt="Instituto Brasil Te Ama" className="logo-img" />
             <div className="logo-name">Instituto Brasil Te Ama</div>
           </div>
         </Link>
@@ -35,6 +35,8 @@ export default function Selo() {
           <a href="#como-funciona" className="btn-ghost" style={{ display: 'inline-block', textDecoration: 'none' }}>Entender como funciona ↓</a>
         </div>
       </div>
+
+      <div className="hero-banner"><img src="/images/editorial-loscudo.jpg" alt="Selo Brasil Te Ama — rede de empresas parceiras" /></div>
 
       <div className="section">
         <div className="section-label">Bloco 1 — O que é o Selo</div>

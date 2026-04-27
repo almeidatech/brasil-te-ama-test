@@ -167,3 +167,21 @@
 }
 .page-home .footer-copy { font-size: 10px; color: rgba(255,255,255,0.35); }
 .page-home .footer-contact { font-size: 10px; color: rgba(255,255,255,0.45); }
+
+.page-home .hero-img {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 280px;
+  object-fit: cover;
+  border-left: 0.5px solid rgba(255,255,255,0.12);
+}
+@media (max-width: 768px) {
+  .page-home .hero-img {
+    position: static; width: 100%; height: 200px; border-left: none;
+    border-top: 0.5px solid rgba(255,255,255,0.12);
+  }
+}
+.page-home .projeto-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.page-home .lider-avatar img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;
+}

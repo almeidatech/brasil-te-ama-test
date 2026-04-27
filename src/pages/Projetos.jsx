@@ -13,7 +13,7 @@ export default function Projetos() {
       <nav className="nav">
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <div className="nav-logo">
-            <div className="logo-box">IBtA</div>
+            <img src="/images/logo.png" alt="Instituto Brasil Te Ama" className="logo-img" />
             <div className="logo-name">Instituto Brasil Te Ama</div>
           </div>
         </Link>
@@ -55,8 +55,7 @@ export default function Projetos() {
 
           <div className="projeto-card">
             <div className="projeto-img">
-              foto da ação · DF<br/>
-              <span className="annotation pending" style={{ fontSize: '9px' }}>pendente</span>
+              <img src="/images/cidadania-02.jpg" alt="Atendimento direto a pessoas em vulnerabilidade extrema no DF" />
             </div>
             <div className="projeto-body">
               <span className="projeto-status status-confirmado">Ativo · confirmado</span>
@@ -73,8 +72,7 @@ export default function Projetos() {
 
           <div className="projeto-card">
             <div className="projeto-img">
-              foto do poço · Nigéria<br/>
-              <span className="annotation pending" style={{ fontSize: '9px' }}>pendente</span>
+              <img src="/images/nigeria.jpg" alt="Poço d'água — Reino de Idado-Ijesa, Nigéria" />
             </div>
             <div className="projeto-body">
               <span className="projeto-status status-confirmado">Ativo · confirmado</span>

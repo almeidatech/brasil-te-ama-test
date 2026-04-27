@@ -13,7 +13,7 @@ export default function Home() {
       <nav className="nav">
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <div className="nav-logo">
-            <div className="logo-placeholder">IBtA</div>
+            <img src="/images/logo.png" alt="Instituto Brasil Te Ama" className="logo-img" />
             <div>
               <div className="logo-name">Instituto Brasil Te Ama</div>
               <div className="logo-sub">PNG logo ← substituir</div>
@@ -36,13 +36,7 @@ export default function Home() {
             <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>ou conheça o Instituto ↓</span>
           </div>
         </div>
-        <div className="hero-img-placeholder">
-          <div className="img-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="rgba(255,255,255,0.4)" strokeWidth="1"/><path d="M1 11l4-4 3 3 3-4 4 5" stroke="rgba(255,255,255,0.4)" strokeWidth="1" strokeLinejoin="round"/></svg>
-          </div>
-          <span>Foto real de ação humanitária</span>
-          <span className="annotation pending">PENDENTE — sem banco de imagem</span>
-        </div>
+        <img src="/images/cidadania-01.jpg" alt="Quarta do Cidadão na Rodoviária do Plano Piloto — DPDF e Brasil Te Ama" className="hero-img" />
       </div>
 
       <div className="section">
@@ -104,7 +98,7 @@ export default function Home() {
         <div className="section-label">Bloco 5 — Projetos em destaque</div>
         <div className="projetos-grid">
           <div className="projeto-card">
-            <div className="projeto-img">foto da ação · DF<br/><span className="annotation pending">pendente</span></div>
+            <div className="projeto-img"><img src="/images/cidadania-04.jpg" alt="Atendimento em situação de vulnerabilidade no DF" /></div>
             <div className="projeto-body">
               <div className="projeto-tag">Brasília · DF</div>
               <div className="projeto-title">Pobreza extrema no Distrito Federal</div>
@@ -112,7 +106,7 @@ export default function Home() {
             </div>
           </div>
           <div className="projeto-card">
-            <div className="projeto-img">foto do poço · Nigéria<br/><span className="annotation pending">pendente</span></div>
+            <div className="projeto-img"><img src="/images/nigeria.jpg" alt="Construção do poço d'água — Reino de Idado-Ijesa, Nigéria" /></div>
             <div className="projeto-body">
               <div className="projeto-tag">Nigéria · Internacional</div>
               <div className="projeto-title">Poço d'água na Nigéria</div>
@@ -183,7 +177,7 @@ export default function Home() {
         <div className="section-label">Bloco 8 — Liderança institucional</div>
         <div className="lideranca-grid">
           <div className="lider-card">
-            <div className="lider-avatar">FN</div>
+            <div className="lider-avatar"><img src="/images/nicoletti-horizontal.jpg" alt="S.E. Dr. Franco Nicoletti" /></div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div className="lider-nome">S.E. Dr. Franco Nicoletti</div>
               <div className="lider-cargo">Fundador — Instituto Brasil Te Ama</div>
