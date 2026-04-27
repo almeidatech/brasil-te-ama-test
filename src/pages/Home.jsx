@@ -147,26 +147,34 @@ export default function Home() {
       <div className="section">
         <div className="section-label">Bloco 7 — Clipping de imprensa</div>
         <div className="clipping-grid">
-          <div className="clip-card">
-            <div className="clip-source">Defensoria do DF · Institucional</div>
-            <div className="clip-title">Parceria entre DPDF e Instituto Brasil Te Ama amplia serviços da Quarta do Cidadão</div>
-            <div className="clip-tag">Assistência odontológica · 2025 <span className="annotation ready">link confirmado</span></div>
-          </div>
-          <div className="clip-card">
-            <div className="clip-source">Agência Brasília · Governo DF</div>
-            <div className="clip-title">Serviços do evento Quarta do Cidadão são ampliados com assistência odontológica</div>
-            <div className="clip-tag">GDF · 2025 <span className="annotation ready">link confirmado</span></div>
-          </div>
-          <div className="clip-card">
-            <div className="clip-source">Metrópoles · Grande imprensa</div>
-            <div className="clip-title">Quarta do Cidadão reúne serviços para homens vulneráveis</div>
-            <div className="clip-tag">Ações em campo <span className="annotation ready">link confirmado</span></div>
-          </div>
-          <div className="clip-card">
-            <div className="clip-source">Lo Scudo Magazine · Internacional</div>
-            <div className="clip-title">25 artigos publicados — trajetória e projetos do Instituto</div>
-            <div className="clip-tag">2024–2026 · Evidência internacional <span className="annotation ready">confirmado</span></div>
-          </div>
+          <a href="https://www.defensoria.df.gov.br/parceria-entre-dpdf-e-instituto-brasil-te-ama-amplia-servicos-da-quarta-do-cidadao-com-assistencia-odontologica/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="clip-card">
+              <div className="clip-source">Defensoria do DF · Institucional</div>
+              <div className="clip-title">Parceria entre DPDF e Instituto Brasil Te Ama amplia serviços da Quarta do Cidadão</div>
+              <div className="clip-tag">Assistência odontológica · 2025 <span className="annotation ready">link confirmado</span></div>
+            </div>
+          </a>
+          <a href="https://www.agenciabrasilia.df.gov.br/w/servicos-do-evento-quarta-do-cidadao-sao-ampliados-com-assistencia-odontologica" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="clip-card">
+              <div className="clip-source">Agência Brasília · Governo DF</div>
+              <div className="clip-title">Serviços do evento Quarta do Cidadão são ampliados com assistência odontológica</div>
+              <div className="clip-tag">GDF · 2025 <span className="annotation ready">link confirmado</span></div>
+            </div>
+          </a>
+          <a href="https://www.metropoles.com/distrito-federal/quarta-do-cidadao-reune-servicos-para-homens-vulneraveis" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="clip-card">
+              <div className="clip-source">Metrópoles · Grande imprensa</div>
+              <div className="clip-title">Quarta do Cidadão reúne serviços para homens vulneráveis</div>
+              <div className="clip-tag">Ações em campo <span className="annotation ready">link confirmado</span></div>
+            </div>
+          </a>
+          <a href="https://loscudomagazine.it" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="clip-card">
+              <div className="clip-source">Lo Scudo Magazine · Internacional</div>
+              <div className="clip-title">25 artigos publicados — trajetória e projetos do Instituto</div>
+              <div className="clip-tag">2024–2026 · Evidência internacional <span className="annotation ready">confirmado</span></div>
+            </div>
+          </a>
         </div>
         <div style={{ marginTop: '12px' }}>
           <Link to="/noticias" style={{ fontSize: '12px', padding: '8px 16px', display: 'inline-block', textDecoration: 'none' }}>Acesse todas as notícias →</Link>
