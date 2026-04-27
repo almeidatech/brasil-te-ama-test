@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
 import './ParaOngs.css';
 
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
@@ -29,8 +30,8 @@ export default function ParaOngs() {
         <h1 className="hero-headline">Sua ONG pode receber apoio da rede Brasil Te Ama.</h1>
         <p className="hero-sub">O Instituto Brasil Te Ama identifica ONGs institucionais sérias, verifica sua atuação e direciona os recursos gerados pelo Programa Selo para organizações que já estão na ponta — preservando sua autonomia e protagonismo.</p>
         <div className="hero-actions">
-          <button className="btn-primary">Cadastrar minha ONG</button>
-          <button className="btn-ghost">Entender os critérios ↓</button>
+          <a href="#form" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>Cadastrar minha ONG</a>
+          <a href="#criterios" className="btn-ghost" style={{ display: 'inline-block', textDecoration: 'none' }}>Entender os critérios ↓</a>
         </div>
       </div>
 
@@ -98,7 +99,7 @@ export default function ParaOngs() {
         </div>
       </div>
 
-      <div className="section">
+      <div className="section" id="criterios">
         <div className="section-label">Bloco 3 — Critérios de elegibilidade</div>
         <div className="elegibilidade">
           <div>
@@ -145,7 +146,7 @@ export default function ParaOngs() {
         </div>
       </div>
 
-      <div className="form-section">
+      <div className="form-section" id="form">
         <div className="form-title">Formulário de cadastro de ONG</div>
         <div className="form-sub">Preencha os dados abaixo. O cadastro não garante apoio imediato — é o início de uma avaliação institucional. Nossa equipe retorna em até 15 dias úteis.</div>
         <div className="form-grid">
@@ -209,6 +210,7 @@ export default function ParaOngs() {
           <Link to="/contato" className="cta-selo-btn" style={ctaLinkStyle}>Quero ser parceiro →</Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

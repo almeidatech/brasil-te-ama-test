@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
 import './Selo.css';
 
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
@@ -30,8 +31,8 @@ export default function Selo() {
         <h1 className="hero-headline">Sua empresa faz parte de uma rede do bem que também apoia você.</h1>
         <p className="hero-sub">O Selo Brasil Te Ama é o símbolo de uma rede de empresas que escolheram participar de uma visão de ajuda mútua — com parceria recíproca, transparência e respaldo internacional.</p>
         <div className="hero-actions">
-          <button className="btn-primary">Solicitar parceria</button>
-          <button className="btn-ghost">Entender como funciona ↓</button>
+          <a href="#form" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>Solicitar parceria</a>
+          <a href="#como-funciona" className="btn-ghost" style={{ display: 'inline-block', textDecoration: 'none' }}>Entender como funciona ↓</a>
         </div>
       </div>
 
@@ -53,7 +54,7 @@ export default function Selo() {
         </div>
       </div>
 
-      <div className="section">
+      <div className="section" id="como-funciona">
         <div className="section-label">Bloco 2 — Como funciona (mecânica em 4 passos)</div>
         <div className="passos">
           <div className="passo">
@@ -261,7 +262,7 @@ export default function Selo() {
         </div>
       </div>
 
-      <div className="form-section">
+      <div className="form-section" id="form">
         <div className="form-title">Solicite uma conversa</div>
         <p className="form-sub">O primeiro contato não é uma triagem fria — é uma conversa real para entender se faz sentido para os dois lados. Preencha o formulário e nossa equipe retornará em até 5 dias úteis.</p>
         <div className="form-grid">
@@ -279,6 +280,7 @@ export default function Selo() {
         </div>
         <div className="annotation pending" style={{ marginTop: '1rem' }}>Formulário: configurar envio para atendimento@institutobrasilteama.org via Elementor Forms ou plugin de e-mail</div>
       </div>
+      <Footer />
     </div>
   );
 }

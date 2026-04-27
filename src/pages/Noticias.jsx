@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
 import './Noticias.css';
 
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
@@ -57,7 +58,7 @@ export default function Noticias() {
               <span className="card-fonte">Ações em campo</span>
               <span className="card-origem">aproveitado do site atual</span>
             </div>
-            <span className="card-link">Ler mais →</span>
+            <a href="https://institutobrasilteama.org/2025/05/22/dia-de-cidadania-e-solidariedade-na-rodoviaria-do-plano-piloto-dpdf-e-brasil-te-ama-em-acao/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
           </div>
         </div>
       </div>
@@ -73,7 +74,7 @@ export default function Noticias() {
               <div className="card-title">Lançamento do Instituto Brasil Te Ama reúne convidados especiais</div>
               <div className="card-resumo">Jantar de lançamento realizado na residência de Franco Nicoletti e Shirin Vafaein — noite de elegância, diálogo e engajamento social.</div>
               <div className="card-meta"><span>27 mai 2025</span><span className="card-origem">aproveitado</span></div>
-              <span className="card-link">Ler mais →</span>
+              <a href="https://institutobrasilteama.org/2025/05/27/lancamento-do-instituto-brasil-te-ama-reune-convidados-especiais-em-noite-memoravel/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
             </div>
           </div>
 
@@ -84,7 +85,7 @@ export default function Noticias() {
               <div className="card-title">23ª Edição do Dia da Mulher — parceria com Defensoria Pública do DF</div>
               <div className="card-resumo">Evento grandioso e transformador em parceria com a DPDF — mais de 1.000 serviços oferecidos à população feminina do DF.</div>
               <div className="card-meta"><span>5 mai 2025</span><span className="card-origem">aproveitado</span></div>
-              <span className="card-link">Ler mais →</span>
+              <a href="https://institutobrasilteama.org/2025/05/05/elementor-421/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
             </div>
           </div>
 
@@ -95,7 +96,7 @@ export default function Noticias() {
               <div className="card-title">Ação Social em Arrozal — cidadania e cuidado à comunidade do Córrego</div>
               <div className="card-resumo">10 de maio de 2025 — parceria com DETRAN, DPDF, CAESB, GDF, Instituto Verônica Rodrigues e Secretaria de Desenvolvimento Social.</div>
               <div className="card-meta"><span>11 mai 2025</span><span className="card-origem">aproveitado</span></div>
-              <span className="card-link">Ler mais →</span>
+              <a href="https://institutobrasilteama.org/2025/05/11/acao-humanitaria-em-arrozal-df/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
             </div>
           </div>
 
@@ -106,7 +107,7 @@ export default function Noticias() {
               <div className="card-title">Instituto Brasil Te Ama na Rádio Sucesso — lançamento oficial</div>
               <div className="card-resumo">11 de abril de 2025 — lançamento do Instituto no programa É Só Subindo, da Rádio Sucesso — primeira aparição pública na mídia.</div>
               <div className="card-meta"><span>11 abr 2025</span><span className="card-origem">aproveitado</span></div>
-              <span className="card-link">Ler mais →</span>
+              <a href="https://institutobrasilteama.org/2025/04/11/instituto-brasil-te-ama-na-radio-sucesso/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
             </div>
           </div>
 
@@ -117,7 +118,7 @@ export default function Noticias() {
               <div className="card-title">Encontro Inspirador com o Atleta Edilson</div>
               <div className="card-resumo">Atleta amador de 75 anos compartilha conquistas em competições de corrida — medalhas e vitórias em Goiás apresentadas à equipe do Instituto.</div>
               <div className="card-meta"><span>15 jul 2025</span><span className="card-origem">aproveitado</span></div>
-              <span className="card-link">Ler mais →</span>
+              <a href="https://institutobrasilteama.org/2025/07/15/encontro-inspirador-com-o-atleta-edilson/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
             </div>
           </div>
 
@@ -128,7 +129,7 @@ export default function Noticias() {
               <div className="card-title">21ª Edição do World Police & Fire Games</div>
               <div className="card-resumo">Participação institucional do Instituto Brasil Te Ama na 21ª edição do evento internacional.</div>
               <div className="card-meta"><span>27 jul 2025</span><span className="card-origem">aproveitado</span></div>
-              <span className="card-link">Ler mais →</span>
+              <a href="https://institutobrasilteama.org/2025/07/27/21a-edicao-do-world-police-fire/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
             </div>
           </div>
 
@@ -139,7 +140,7 @@ export default function Noticias() {
               <div className="card-title">Homenagem ao Dia das Mães — Instituto Brasil Te Ama</div>
               <div className="card-resumo">Celebração do Dia das Mães com mensagem institucional de reconhecimento e cuidado.</div>
               <div className="card-meta"><span>11 mai 2025</span><span className="card-origem">aproveitado</span></div>
-              <span className="card-link">Ler mais →</span>
+              <a href="https://institutobrasilteama.org/2025/05/11/homenagem-ao-dia-das-maes-instituto-brasil-te-ama/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
             </div>
           </div>
 
@@ -150,7 +151,7 @@ export default function Noticias() {
               <div className="card-title">Atleta amador de 75 anos brilha em competições de corrida em Goiás</div>
               <div className="card-resumo">Edilson da Costa Dias conquista 1º lugar no Circuito Anapolino — história de superação apoiada pelo Instituto.</div>
               <div className="card-meta"><span>1 abr 2025</span><span className="card-origem">aproveitado</span></div>
-              <span className="card-link">Ler mais →</span>
+              <a href="https://institutobrasilteama.org/2025/04/01/atleta-amador-de-75-anos-brilha-em-competicoes-de-corrida-e-conquista-duas-vitorias-em-goias/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
             </div>
           </div>
 
@@ -160,31 +161,41 @@ export default function Noticias() {
       <div className="section">
         <div className="section-label">Clipping de imprensa — cobertura externa confirmada</div>
         <div className="imprensa-grid">
-          <div className="imprensa-card">
-            <div className="imprensa-source">Defensoria Pública do DF · Institucional</div>
-            <div className="imprensa-title">Parceria entre DPDF e Instituto Brasil Te Ama amplia serviços da Quarta do Cidadão com assistência odontológica</div>
-            <div className="imprensa-meta">defensoria.df.gov.br · 2025 <span className="annotation ready" style={{ marginLeft: '4px' }}>link confirmado</span></div>
-          </div>
-          <div className="imprensa-card">
-            <div className="imprensa-source">Agência Brasília · Governo do DF</div>
-            <div className="imprensa-title">Serviços do evento Quarta do Cidadão são ampliados com assistência odontológica</div>
-            <div className="imprensa-meta">agenciabrasilia.df.gov.br · 2025 <span className="annotation ready" style={{ marginLeft: '4px' }}>link confirmado</span></div>
-          </div>
-          <div className="imprensa-card">
-            <div className="imprensa-source">Metrópoles · Grande imprensa</div>
-            <div className="imprensa-title">Quarta do Cidadão reúne serviços para homens vulneráveis</div>
-            <div className="imprensa-meta">metropoles.com · 2025 <span className="annotation ready" style={{ marginLeft: '4px' }}>link confirmado</span></div>
-          </div>
-          <div className="imprensa-card">
-            <div className="imprensa-source">Lo Scudo Magazine · Internacional</div>
-            <div className="imprensa-title">25 artigos publicados — trajetória e projetos do Instituto Brasil Te Ama</div>
-            <div className="imprensa-meta">loscudomagazine.it · 2024–2026 <span className="annotation ready" style={{ marginLeft: '4px' }}>confirmado</span></div>
-          </div>
-          <div className="imprensa-card">
-            <div className="imprensa-source">Última Hora Online</div>
-            <div className="imprensa-title">Fundador Franco Nicoletti e presidente Shirin Vafaein explicam como o Instituto conecta quem pode ajudar a quem precisa</div>
-            <div className="imprensa-meta">ultimahoraonline.com.br <span className="annotation ready" style={{ marginLeft: '4px' }}>link confirmado</span></div>
-          </div>
+          <a href="https://www.defensoria.df.gov.br/parceria-entre-dpdf-e-instituto-brasil-te-ama-amplia-servicos-da-quarta-do-cidadao-com-assistencia-odontologica/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="imprensa-card">
+              <div className="imprensa-source">Defensoria Pública do DF · Institucional</div>
+              <div className="imprensa-title">Parceria entre DPDF e Instituto Brasil Te Ama amplia serviços da Quarta do Cidadão com assistência odontológica</div>
+              <div className="imprensa-meta">defensoria.df.gov.br · 2025 <span className="annotation ready" style={{ marginLeft: '4px' }}>link confirmado</span></div>
+            </div>
+          </a>
+          <a href="https://www.agenciabrasilia.df.gov.br/w/servicos-do-evento-quarta-do-cidadao-sao-ampliados-com-assistencia-odontologica" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="imprensa-card">
+              <div className="imprensa-source">Agência Brasília · Governo do DF</div>
+              <div className="imprensa-title">Serviços do evento Quarta do Cidadão são ampliados com assistência odontológica</div>
+              <div className="imprensa-meta">agenciabrasilia.df.gov.br · 2025 <span className="annotation ready" style={{ marginLeft: '4px' }}>link confirmado</span></div>
+            </div>
+          </a>
+          <a href="https://www.metropoles.com/distrito-federal/quarta-do-cidadao-reune-servicos-para-homens-vulneraveis" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="imprensa-card">
+              <div className="imprensa-source">Metrópoles · Grande imprensa</div>
+              <div className="imprensa-title">Quarta do Cidadão reúne serviços para homens vulneráveis</div>
+              <div className="imprensa-meta">metropoles.com · 2025 <span className="annotation ready" style={{ marginLeft: '4px' }}>link confirmado</span></div>
+            </div>
+          </a>
+          <a href="https://loscudomagazine.it" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="imprensa-card">
+              <div className="imprensa-source">Lo Scudo Magazine · Internacional</div>
+              <div className="imprensa-title">25 artigos publicados — trajetória e projetos do Instituto Brasil Te Ama</div>
+              <div className="imprensa-meta">loscudomagazine.it · 2024–2026 <span className="annotation ready" style={{ marginLeft: '4px' }}>confirmado</span></div>
+            </div>
+          </a>
+          <a href="https://www.ultimahoraonline.com.br/noticia/fundador-franco-nicoletti-e-presidente-shirin-vafaein-explica-como-o-instituto-brasil-te-ama-conecta-quem-pode-ajudar-a-quem-precisa" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="imprensa-card">
+              <div className="imprensa-source">Última Hora Online</div>
+              <div className="imprensa-title">Fundador Franco Nicoletti e presidente Shirin Vafaein explicam como o Instituto conecta quem pode ajudar a quem precisa</div>
+              <div className="imprensa-meta">ultimahoraonline.com.br <span className="annotation ready" style={{ marginLeft: '4px' }}>link confirmado</span></div>
+            </div>
+          </a>
           <div className="imprensa-card">
             <div className="imprensa-source">Rádio Sucesso</div>
             <div className="imprensa-title">Instituto Brasil Te Ama no programa É Só Subindo — lançamento oficial em entrevista ao vivo</div>
@@ -207,6 +218,7 @@ export default function Noticias() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

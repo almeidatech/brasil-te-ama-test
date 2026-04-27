@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
 import './Transparencia.css';
 
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
@@ -311,6 +312,7 @@ export default function Transparencia() {
           <button className="cta-ongs-btn">Cadastrar minha ONG →</button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
 import './Lideranca.css';
 
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
@@ -259,6 +260,7 @@ export default function Lideranca() {
           <Link to="/selo" className="cta-selo-btn" style={ctaLinkStyle}>Quero ser parceiro →</Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

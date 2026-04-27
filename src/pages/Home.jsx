@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
 import './Home.css';
 
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
@@ -207,41 +208,7 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="footer">
-        <div className="footer-grid">
-          <div>
-            <div className="footer-brand-name">Instituto Brasil Te Ama</div>
-            <div className="footer-brand-cnpj">CNPJ: 49.458.362/0001-10 · Brasília, DF</div>
-            <div className="footer-brand-note">O Instituto Brasil Te Ama é uma organização humanitária sem fins lucrativos. Para informações sobre enquadramentos legais da parceria, entre em contato com nossa equipe.</div>
-            <div style={{ marginTop: '10px', fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>
-              atendimento@institutobrasilteama.org<br/>
-              (61) 3321-2535 · (61) 98498-1100
-            </div>
-          </div>
-          <div>
-            <div className="footer-col-title">Institucional</div>
-            <Link to="/" className="footer-link" style={{ textDecoration: 'none' }}>Home</Link>
-            <Link to="/sobre" className="footer-link" style={{ textDecoration: 'none' }}>Sobre</Link>
-            <Link to="/lideranca" className="footer-link" style={{ textDecoration: 'none' }}>Liderança</Link>
-            <Link to="/transparencia" className="footer-link" style={{ textDecoration: 'none' }}>Transparência</Link>
-            <Link to="/para-ongs" className="footer-link" style={{ textDecoration: 'none' }}>Para ONGs</Link>
-          </div>
-          <div>
-            <div className="footer-col-title">Programa</div>
-            <Link to="/selo" className="footer-link" style={{ textDecoration: 'none' }}>Selo Brasil Te Ama</Link>
-            <Link to="/projetos" className="footer-link" style={{ textDecoration: 'none' }}>Projetos</Link>
-            <Link to="/noticias" className="footer-link" style={{ textDecoration: 'none' }}>Notícias</Link>
-            <Link to="/contato" className="footer-link" style={{ textDecoration: 'none' }}>Contato</Link>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <div className="footer-copy">© 2022–2026 Instituto Brasil Te Ama · Todos os direitos reservados</div>
-          <div className="footer-contact">
-            <span style={{ color: 'rgba(255,255,255,0.3)', marginRight: '8px' }}>Redes sociais:</span>
-            <span className="annotation pending" style={{ fontSize: '9px' }}>confirmar handles</span>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

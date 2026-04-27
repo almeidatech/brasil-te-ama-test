@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
 import './Sobre.css';
 
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
@@ -271,6 +272,7 @@ export default function Sobre() {
           <Link to="/lideranca" className="cta-lideranca-btn" style={ctaLinkStyle}>Conheça nossa liderança →</Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

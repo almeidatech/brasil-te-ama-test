@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
 import './Contato.css';
 
 const navLinkStyle = { color: 'inherit', textDecoration: 'none' };
@@ -119,7 +120,7 @@ export default function Contato() {
             <div>
               <div className="atalho-title">Programa Selo Brasil Te Ama</div>
               <div className="atalho-text">Conheça o programa completo — como funciona, benefícios, formulário de interesse e FAQ.</div>
-              <div className="atalho-btn">Ver página do Selo →</div>
+              <Link to="/selo" className="atalho-btn" style={{ display: 'inline-block', textDecoration: 'none' }}>Ver página do Selo →</Link>
             </div>
           </div>
           <div className="atalho-card">
@@ -129,7 +130,7 @@ export default function Contato() {
             <div>
               <div className="atalho-title">ONGs — cadastro e elegibilidade</div>
               <div className="atalho-text">Sua ONG pode receber apoio da rede. Veja os critérios e o formulário de cadastro.</div>
-              <div className="atalho-btn">Ver página Para ONGs →</div>
+              <Link to="/para-ongs" className="atalho-btn" style={{ display: 'inline-block', textDecoration: 'none' }}>Ver página Para ONGs →</Link>
             </div>
           </div>
           <div className="atalho-card">
@@ -139,7 +140,7 @@ export default function Contato() {
             <div>
               <div className="atalho-title">Transparência e relatórios</div>
               <div className="atalho-text">Indicadores de impacto, parceiros confirmados e política de prestação de contas.</div>
-              <div className="atalho-btn">Ver página Transparência →</div>
+              <Link to="/transparencia" className="atalho-btn" style={{ display: 'inline-block', textDecoration: 'none' }}>Ver página Transparência →</Link>
             </div>
           </div>
           <div className="atalho-card">
@@ -149,11 +150,12 @@ export default function Contato() {
             <div>
               <div className="atalho-title">Liderança institucional</div>
               <div className="atalho-text">Conheça S.E. Dr. Franco Nicoletti e Shirin Vafaein — fundador e presidente do Instituto.</div>
-              <div className="atalho-btn">Ver página Liderança →</div>
+              <Link to="/lideranca" className="atalho-btn" style={{ display: 'inline-block', textDecoration: 'none' }}>Ver página Liderança →</Link>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

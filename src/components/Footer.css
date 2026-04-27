@@ -1,0 +1,14 @@
+/* Footer compartilhado — visual idêntico ao Home, classes próprias para evitar colisão */
+.site-footer { background: #2C2C2A; padding: 2rem 1.5rem; border-top: 0.5px solid rgba(255,255,255,0.1); }
+.site-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
+.site-footer-brand-name { font-size: 13px; font-weight: 500; color: white; margin-bottom: 4px; }
+.site-footer-brand-cnpj { font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.site-footer-brand-note { font-size: 10px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+.site-footer-col-title { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
+.site-footer-link { font-size: 11px; color: rgba(255,255,255,0.6); display: block; margin-bottom: 5px; }
+.site-footer-bottom {
+  border-top: 0.5px solid rgba(255,255,255,0.1); padding-top: 1rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.site-footer-copy { font-size: 10px; color: rgba(255,255,255,0.35); }
+.site-footer-contact { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 10px; }
