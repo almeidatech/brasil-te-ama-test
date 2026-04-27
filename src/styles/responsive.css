@@ -1,0 +1,250 @@
+/* Mobile responsive overrides.
+   Loaded LAST in main.jsx so order wins for equal-specificity rules.
+   Selector strategy: [class^="page-"] .className matches every page-scoped
+   class with specificity 0,2,0 (same as .page-X .className) — order wins.
+   Page CSS uses single-class containers like .nav, .hero, .section, etc.
+   No JSX/CSS files were modified; all overrides live here. */
+
+/* Universal: prevent horizontal overflow on small viewports */
+html, body, #root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   TABLET / SMALL DESKTOP AND BELOW
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* ---------- Section padding (all pages) ---------- */
+  [class^="page-"] .section {
+    padding: 1.5rem 1rem;
+  }
+
+  /* ---------- Nav: hide links, keep logo + CTA ---------- */
+  [class^="page-"] .nav {
+    padding: 12px 1rem;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  [class^="page-"] .nav-links {
+    display: none;
+  }
+  [class^="page-"] .nav-cta {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  [class^="page-"] .logo-name {
+    font-size: 12px;
+  }
+
+  /* ---------- Hero (all pages) ---------- */
+  [class^="page-"] .hero,
+  [class^="page-"] .hero-selo,
+  [class^="page-"] .lider-section {
+    padding: 2rem 1rem;
+  }
+  [class^="page-"] .hero-headline {
+    font-size: 22px;
+    max-width: 100%;
+    padding-right: 0;
+  }
+  [class^="page-"] .hero-sub,
+  [class^="page-"] .hero-subtitle {
+    font-size: 13px;
+    max-width: 100%;
+  }
+
+  /* ---------- Home: absolute hero image -> stack below text ---------- */
+  [class^="page-"] .hero {
+    padding-right: 1rem;
+  }
+  [class^="page-"] .hero-img-placeholder {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    border-left: none;
+    border-top: 0.5px solid rgba(255,255,255,0.12);
+    margin-top: 1.5rem;
+    padding: 1rem;
+  }
+
+  /* ---------- All multi-column grids -> single column ---------- */
+  [class^="page-"] .cred-row,
+  [class^="page-"] .metrics-grid,
+  [class^="page-"] .projetos-grid,
+  [class^="page-"] .clipping-grid,
+  [class^="page-"] .lideranca-grid,
+  [class^="page-"] .apresentacao-grid,
+  [class^="page-"] .mvv-grid,
+  [class^="page-"] .atuacao-grid,
+  [class^="page-"] .parceiros-grid,
+  [class^="page-"] .geo-grid,
+  [class^="page-"] .oque-grid,
+  [class^="page-"] .beneficios-grid,
+  [class^="page-"] .elegibilidade,
+  [class^="page-"] .gov-grid,
+  [class^="page-"] .form-grid,
+  [class^="page-"] .cards-grid,
+  [class^="page-"] .imprensa-grid,
+  [class^="page-"] .indicadores-grid,
+  [class^="page-"] .criterios-grid,
+  [class^="page-"] .conquistas-grid,
+  [class^="page-"] .oferta-grid,
+  [class^="page-"] .compromissos-grid,
+  [class^="page-"] .segmentos-grid,
+  [class^="page-"] .atalhos-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* MVV card: remove right border (was a column divider) */
+  [class^="page-"] .mvv-card {
+    border-right: none;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  [class^="page-"] .mvv-card:last-child {
+    border-bottom: none;
+  }
+
+  /* Lideranca: 180px 1fr -> stack ---------- */
+  [class^="page-"] .lider-header {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  [class^="page-"] .lider-foto {
+    width: 100%;
+    max-width: 220px;
+    height: 220px;
+    margin: 0 auto;
+  }
+
+  /* Noticias card-destaque: 240px 1fr -> stack ---------- */
+  [class^="page-"] .card-destaque {
+    grid-template-columns: 1fr;
+  }
+  [class^="page-"] .card-destaque-img {
+    border-right: none;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    min-height: 120px;
+  }
+
+  /* Contato form-layout: 1fr 320px -> stack ---------- */
+  [class^="page-"] .form-layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Selo comparativo: 1fr 1fr 1fr keeps as a small table grid.
+     Reduce padding to fit 3 narrow columns on mobile (collapsing
+     would break the side-by-side comparison the page is built around). */
+  [class^="page-"] .comp-header,
+  [class^="page-"] .comp-row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  [class^="page-"] .comp-th,
+  [class^="page-"] .comp-cell {
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+
+  /* ---------- Footer grid 2fr 1fr 1fr -> single column ---------- */
+  [class^="page-"] .footer {
+    padding: 1.5rem 1rem;
+  }
+  [class^="page-"] .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  [class^="page-"] .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* ---------- CTA blocks: stack content + button ---------- */
+  [class^="page-"] .selo-block,
+  [class^="page-"] .cta-lideranca,
+  [class^="page-"] .cta-selo,
+  [class^="page-"] .cta-newsletter,
+  [class^="page-"] .cta-ongs,
+  [class^="page-"] .relatorio-box {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+  [class^="page-"] .selo-cta,
+  [class^="page-"] .cta-lideranca-btn,
+  [class^="page-"] .cta-selo-btn,
+  [class^="page-"] .cta-newsletter-btn,
+  [class^="page-"] .cta-ongs-btn,
+  [class^="page-"] .relatorio-btn {
+    width: 100%;
+    text-align: center;
+    align-self: stretch;
+  }
+  [class^="page-"] .cta-newsletter-form {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  [class^="page-"] .cta-newsletter-input {
+    width: 100%;
+  }
+
+  /* Form section padding */
+  [class^="page-"] .form-section {
+    padding: 2rem 1rem;
+  }
+
+  /* Lider foto block in Home (small avatar lider-card) keeps row layout */
+  /* Hero badge / actions wrap nicely already (flex-wrap) */
+}
+
+/* ============================================================
+   PHONE (<= 480px): tighter typography & spacing
+   ============================================================ */
+@media (max-width: 480px) {
+  [class^="page-"] .section {
+    padding: 1.25rem 0.875rem;
+  }
+  [class^="page-"] .hero,
+  [class^="page-"] .hero-selo,
+  [class^="page-"] .lider-section {
+    padding: 1.75rem 0.875rem;
+  }
+  [class^="page-"] .hero-headline {
+    font-size: 20px;
+  }
+  [class^="page-"] .hero-sub,
+  [class^="page-"] .hero-subtitle {
+    font-size: 12.5px;
+  }
+
+  /* Comparative table at very small widths: shrink even more */
+  [class^="page-"] .comp-th,
+  [class^="page-"] .comp-cell {
+    padding: 6px 4px;
+    font-size: 9px;
+  }
+
+  [class^="page-"] .lider-foto {
+    height: 200px;
+    max-width: 180px;
+  }
+
+  /* Form fields full-width (already 1fr by previous rule) */
+  [class^="page-"] .nav-cta {
+    padding: 5px 10px;
+    font-size: 10.5px;
+  }
+  [class^="page-"] .logo-name {
+    font-size: 11.5px;
+  }
+  [class^="page-"] .logo-sub {
+    font-size: 9.5px;
+  }
+}
